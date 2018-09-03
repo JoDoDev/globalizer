@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8080;
 const IS_PRODUCTION = process.env.GLOBALIZER_ENV === 'PRODUCTION';
 
 app.use((req, res, next) => {
-  if (!IS_PRODUCTION || req.protocol === 'https')
+  if (!IS_PRODUCTION || req.headers['x-forwarded-proto'] === 'https')
     next();
   else
     res.redirect('https://' + req.headers.host + req.url);
