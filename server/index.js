@@ -21,4 +21,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(PUBLIC_PATH, 'index.html'))
 });
 
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
+
 server.listen(PORT);
