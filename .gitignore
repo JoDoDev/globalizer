@@ -39,4 +39,5 @@ testem.log
 Thumbs.db
 
 # Angular builds
-public/
+public/*
+!public/robots.txt
