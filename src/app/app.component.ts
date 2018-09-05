@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UpdateService} from './providers/update.service';
-import {MessagingService} from './providers/messaging.service';
+import {UpdateService} from './providers/update/update.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import {MessagingService} from './providers/messaging.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private updateService: UpdateService, private message: MessagingService) {
+  constructor(private updateService: UpdateService) {
   }
 
   ngOnInit() {

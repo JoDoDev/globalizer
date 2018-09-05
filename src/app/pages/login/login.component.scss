@@ -1,0 +1,20 @@
+.center {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @media only screen and (max-width: 412px) {
+    left: 0;
+    transform: translate(0, -50%);
+    margin-left: 10px;
+    margin-right: 10px;
+    width: calc(100% - 20px);
+  }
+}
+
+
+
+.full-width {
+  width: 100%;
+}

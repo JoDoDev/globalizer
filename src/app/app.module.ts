@@ -6,9 +6,10 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
-import {LoginComponent} from './login/login.component';
-import {ChatComponent} from './chat/chat.component';
-import {MatDialogModule} from '@angular/material';
+import {LoginComponent} from './pages/login/login.component';
+import {ChatComponent} from './pages/chat/chat.component';
+import {MatButtonModule, MatDialogModule, MatInputModule} from '@angular/material';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import {MatDialogModule} from '@angular/material';
     ChatComponent,
   ],
   imports: [
-    MatDialogModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
