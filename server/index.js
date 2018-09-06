@@ -31,7 +31,7 @@ app.get('*', (req, res) => {
 
 io.on('connection', function (socket) {
   socket.on('AUTH_USERNAME', (username) => {
-    console.log('auth username');
+    console.log('AUTH_USERNAME');
     const userId = uuid();
     USERS.push({
       username,
@@ -41,6 +41,21 @@ io.on('connection', function (socket) {
       success: true,
       userId
     })
+  });
+  socket.on('AUTH_USER_ID', (userId) => {
+    console.log('AUTH_USER_ID');
+    const user = USERS.find((user) => user.userId === userId);
+
+    if (user === undefined) {
+      socket.emit('AUTH_USER_ID', {
+        success: false
+      })
+    } else {
+      socket.emit('AUTH_USER_ID', {
+        success: true,
+        username: user.username
+      })
+    }
   })
 });
 

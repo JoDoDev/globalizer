@@ -13,10 +13,7 @@ export class ChatComponent implements OnInit {
   }
 
   async ngOnInit() {
-    if (!await this.authService.canAuthenticate()) {
-      await this.router.navigate(['/login']);
-      return;
-    }
+
   }
 
 }

@@ -10,14 +10,12 @@ import {Router} from '@angular/router';
 export class LoginComponent {
   public username = '';
 
-
   constructor(private authService: AuthService, private router: Router) {
-
   }
 
   public async login() {
-    if(await this.authService.authenticateWithUsername(this.username)) {
-      this.router.navigate(['/']);
+    if (await this.authService.authenticateWithUsername(this.username)) {
+      await this.router.navigate(['/']);
     }
   }
 

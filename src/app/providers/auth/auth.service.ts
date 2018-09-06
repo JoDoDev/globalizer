@@ -20,11 +20,10 @@ export class AuthService {
     }
 
     if (this.getUserId() != null) {
-      await this.authenticateWithUserId(this.getUserId());
+      return await this.authenticateWithUserId(this.getUserId());
     }
 
     return false;
-
   }
 
   public async authenticateWithUsername(username: string) {
@@ -32,9 +31,12 @@ export class AuthService {
       this.socketService.send(SocketEventType.AUTH_USERNAME, username);
 
       this.socketService.once(SocketEventType.AUTH_USERNAME, async ({success, userId}) => {
+        console.log(`userId auth success: ${success}, username: ${userId}`);
+
         if (success) {
           this.setUserId(userId);
         }
+        this.isAuthenticated = success;
         resolve(success);
       });
     });
@@ -45,9 +47,12 @@ export class AuthService {
       this.socketService.send(SocketEventType.AUTH_USER_ID, userId);
 
       this.socketService.once(SocketEventType.AUTH_USER_ID, async ({success, username}) => {
+        console.log(`userId auth success: ${success}, username: ${username}`);
+
         if (success) {
           this.setUsername(username);
         }
+        this.isAuthenticated = success;
         resolve(success);
       });
     });
