@@ -9,6 +9,7 @@ const PUBLIC_PATH = path.join(__dirname, '../public');
 const PORT = process.env.PORT || 8080;
 const IS_PRODUCTION = process.env.GLOBALIZER_ENV === 'PRODUCTION';
 const USERS = [];
+let userCount = 0;
 
 const app = express();
 const server = http.createServer(app);
@@ -44,7 +45,8 @@ io.on('connection', function (socket) {
       success: true,
       userId: user.userId,
       userKey: user.userKey
-    })
+    });
+    io.emit('USER_COUNT', ++userCount);
   });
   socket.on('AUTH_USER_ID', (userId) => {
     console.log('AUTH_USER_ID');
@@ -60,7 +62,8 @@ io.on('connection', function (socket) {
         success: true,
         username: user.username,
         userKey: user.userKey
-      })
+      });
+      io.emit('USER_COUNT', ++userCount);
     }
   });
   socket.on('SEND_MESSAGE', (text) => {
@@ -78,7 +81,18 @@ io.on('connection', function (socket) {
         time: new Date().toISOString()
       }])
     }
-  })
+  });
+  socket.on('USER_COUNT', () => {
+    console.log('USER_COUNT');
+
+    socket.emit('USER_COUNT', userCount);
+  });
+  socket.on('disconnect', function () {
+    console.log('disconnect');
+
+    io.emit('USER_COUNT', --userCount);
+  });
 });
+
 
 server.listen(PORT);
