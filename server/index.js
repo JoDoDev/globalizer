@@ -9,6 +9,7 @@ const PUBLIC_PATH = path.join(__dirname, '../public');
 const PORT = process.env.PORT || 8080;
 const IS_PRODUCTION = process.env.GLOBALIZER_ENV === 'PRODUCTION';
 const USERS = [];
+let userCount = 0;
 
 const app = express();
 const server = http.createServer(app);
@@ -30,33 +31,68 @@ app.get('*', (req, res) => {
 });
 
 io.on('connection', function (socket) {
+  let user = null;
+
   socket.on('AUTH_USERNAME', (username) => {
     console.log('AUTH_USERNAME');
-    const userId = uuid();
-    USERS.push({
+    user = {
       username,
-      userId
-    });
+      userId: uuid(),
+      userKey: uuid()
+    };
+    USERS.push(user);
     socket.emit('AUTH_USERNAME', {
       success: true,
-      userId
-    })
+      userId: user.userId,
+      userKey: user.userKey
+    });
+    io.emit('USER_COUNT', ++userCount);
   });
   socket.on('AUTH_USER_ID', (userId) => {
     console.log('AUTH_USER_ID');
-    const user = USERS.find((user) => user.userId === userId);
+    const foundUser = USERS.find((user) => user.userId === userId);
 
-    if (user === undefined) {
+    if (foundUser === undefined) {
       socket.emit('AUTH_USER_ID', {
         success: false
       })
     } else {
+      user = foundUser;
       socket.emit('AUTH_USER_ID', {
         success: true,
-        username: user.username
-      })
+        username: user.username,
+        userKey: user.userKey
+      });
+      io.emit('USER_COUNT', ++userCount);
     }
-  })
+  });
+  socket.on('SEND_MESSAGE', (text) => {
+    console.log('SEND_MESSAGE');
+
+    if (user === null) {
+      socket.emit('SEND_MESSAGE', {
+        success: false
+      })
+    } else {
+      io.emit('MESSAGES', [{
+        text,
+        userKey: user.userKey,
+        username: user.username,
+        time: new Date().toISOString()
+      }])
+    }
+  });
+  socket.on('USER_COUNT', () => {
+    console.log('USER_COUNT');
+
+    socket.emit('USER_COUNT', userCount);
+  });
+  socket.on('disconnect', function () {
+    console.log('disconnect');
+
+    io.emit('USER_COUNT', --userCount);
+  });
 });
+
 
 server.listen(PORT);

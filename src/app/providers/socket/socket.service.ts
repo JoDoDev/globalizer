@@ -28,7 +28,10 @@ export class SocketService {
     this.socket.once(eventType, fun);
   }
 
-  public send(eventType: SocketEventType, obj: any) {
-    this.socket.emit(eventType, obj);
+  public send(eventType: SocketEventType, obj?: any) {
+    if (obj != undefined)
+      this.socket.emit(eventType, obj);
+    else
+      this.socket.emit(eventType);
   }
 }
