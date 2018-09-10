@@ -63,7 +63,7 @@ io.on('connection', function (socket) {
       })
     }
   });
-  socket.on('SEND_MESSAGE', (message) => {
+  socket.on('SEND_MESSAGE', (text) => {
     console.log('SEND_MESSAGE');
 
     if (user === null) {
@@ -72,7 +72,7 @@ io.on('connection', function (socket) {
       })
     } else {
       io.emit('MESSAGES', [{
-        message,
+        text,
         userKey: user.userKey,
         username: user.username,
         time: new Date().toISOString()
