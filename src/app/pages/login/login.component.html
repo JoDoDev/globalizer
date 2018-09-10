@@ -1,9 +1,14 @@
 <div class="center">
   <h1>Globalizer</h1>
 
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Username" value="" [(ngModel)]="username">
-  </mat-form-field>
+  <form #loginForm="ngForm" (ngSubmit)="login()">
 
-  <button mat-raised-button color="primary" class="full-width" (click)="login()">Login</button>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Username" type="text" [(ngModel)]="username">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="full-width" (click)="login()" type="submit">
+      Login
+    </button>
+  </form>
 </div>
