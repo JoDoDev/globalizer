@@ -75,7 +75,7 @@ io.on('connection', function (socket) {
         message,
         userKey: user.userKey,
         username: user.username,
-        time: new Date()
+        time: new Date().toISOString()
       }])
     }
   })
