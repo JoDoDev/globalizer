@@ -30,31 +30,53 @@ app.get('*', (req, res) => {
 });
 
 io.on('connection', function (socket) {
+  let user = null;
+
   socket.on('AUTH_USERNAME', (username) => {
     console.log('AUTH_USERNAME');
-    const userId = uuid();
-    USERS.push({
+    user = {
       username,
-      userId
-    });
+      userId: uuid(),
+      userKey: uuid()
+    };
+    USERS.push(user);
     socket.emit('AUTH_USERNAME', {
       success: true,
-      userId
+      userId: user.userId,
+      userKey: user.userKey
     })
   });
   socket.on('AUTH_USER_ID', (userId) => {
     console.log('AUTH_USER_ID');
-    const user = USERS.find((user) => user.userId === userId);
+    const foundUser = USERS.find((user) => user.userId === userId);
 
-    if (user === undefined) {
+    if (foundUser === undefined) {
       socket.emit('AUTH_USER_ID', {
         success: false
       })
     } else {
+      user = foundUser;
       socket.emit('AUTH_USER_ID', {
         success: true,
-        username: user.username
+        username: user.username,
+        userKey: user.userKey
       })
+    }
+  });
+  socket.on('SEND_MESSAGE', (message) => {
+    console.log('SEND_MESSAGE');
+
+    if (user === null) {
+      socket.emit('SEND_MESSAGE', {
+        success: false
+      })
+    } else {
+      io.emit('MESSAGES', [{
+        message,
+        userKey: user.userKey,
+        username: user.username,
+        time: new Date()
+      }])
     }
   })
 });
