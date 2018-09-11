@@ -1,22 +1,22 @@
+:host {
+  height: 100%;
+  display: grid;
+}
+
 .container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 900px;
-  height: 700px;
-
-  max-width: 90vw;
-  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 
   background-color: #ffffff;
 
-  @media only screen and (max-width: 412px) {
-    top: 0;
-    left: 0;
-    transform: translate(-0%, -0%);
+  height: 80%;
+  width: 80%;
 
+  max-width: 700px;
+  max-height: 900px;
+
+  @media only screen and (max-width: 412px) {
     width: 100vw;
     height: 100vh;
 
@@ -26,22 +26,11 @@
 }
 
 app-chat-title-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
 }
 
 app-chatbox {
-  padding-top: 64px;
-  height: calc(100% - 129px);
+  flex: 1;
 }
 
 app-message-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
 }
