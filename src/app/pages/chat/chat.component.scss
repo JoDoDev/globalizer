@@ -25,6 +25,23 @@
   }
 }
 
-.spacer {
-  flex: 1 1 auto;
+app-chat-title-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+app-chatbox {
+  padding-top: 64px;
+  height: calc(100% - 129px);
+}
+
+app-message-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }

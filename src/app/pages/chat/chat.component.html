@@ -1,23 +1,5 @@
 <div class="container">
-  <mat-toolbar color="primary">
-    <span>My Application</span>
-    <span class="spacer"></span>
-    <span>online: {{userCount$ | async}}</span>
-  </mat-toolbar>
-
-  <p *ngFor="let message of messages$ | async">
-    {{message.text}}
-  </p>
-
-
-  <form #sendMessageForm="ngForm" (ngSubmit)="sendMessage()">
-    <mat-form-field class="full-width">
-      <input matInput placeholder="message" type="text" name="message" [(ngModel)]="newMessage">
-    </mat-form-field>
-
-    <button mat-icon-button type="submit">
-      <mat-icon>send</mat-icon>
-    </button>
-  </form>
-
+  <app-chat-title-bar [userCount$]="userCount$"></app-chat-title-bar>
+  <app-chatbox [messages$]="messages$"></app-chatbox>
+  <app-message-bar [(message)]="newMessage" (send)="sendMessage()"></app-message-bar>
 </div>
