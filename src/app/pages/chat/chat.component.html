@@ -1,8 +1,23 @@
-<p *ngFor="let message of messages$ | async">
-  {{message.text}}
-</p>
-<input type="text" [(ngModel)]="newMessage">
-<button (click)="sendMessage()">dfas</button>
+<div class="container">
+  <mat-toolbar color="primary">
+    <span>My Application</span>
+    <span class="spacer"></span>
+    <span>online: {{userCount$ | async}}</span>
+  </mat-toolbar>
+
+  <p *ngFor="let message of messages$ | async">
+    {{message.text}}
+  </p>
 
 
-<h1>{{userCount$ | async}}</h1>
+  <form #sendMessageForm="ngForm" (ngSubmit)="sendMessage()">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="message" type="text" name="message" [(ngModel)]="newMessage">
+    </mat-form-field>
+
+    <button mat-icon-button type="submit">
+      <mat-icon>send</mat-icon>
+    </button>
+  </form>
+
+</div>

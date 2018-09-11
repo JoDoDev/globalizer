@@ -8,7 +8,7 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {LoginComponent} from './pages/login/login.component';
 import {ChatComponent} from './pages/chat/chat.component';
-import {MatButtonModule, MatDialogModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatInputModule, MatToolbarModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -18,8 +18,10 @@ import {FormsModule} from '@angular/forms';
     ChatComponent,
   ],
   imports: [
+    MatIconModule,
     MatInputModule,
     MatButtonModule,
+    MatToolbarModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
