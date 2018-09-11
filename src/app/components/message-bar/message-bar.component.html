@@ -1,0 +1,9 @@
+<form #sendMessageForm="ngForm" (ngSubmit)="send.emit()">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="message" type="text" name="message" [ngModel]="messageValue" (ngModelChange)="message = $event">
+  </mat-form-field>
+
+  <button mat-icon-button type="submit">
+    <mat-icon>send</mat-icon>
+  </button>
+</form>

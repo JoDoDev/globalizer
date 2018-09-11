@@ -1,8 +1,5 @@
-<p *ngFor="let message of messages$ | async">
-  {{message.text}}
-</p>
-<input type="text" [(ngModel)]="newMessage">
-<button (click)="sendMessage()">dfas</button>
-
-
-<h1>{{userCount$ | async}}</h1>
+<div class="container">
+  <app-chat-title-bar [userCount$]="userCount$"></app-chat-title-bar>
+  <app-chatbox [messages$]="messages$"></app-chatbox>
+  <app-message-bar [(message)]="newMessage" (send)="sendMessage()"></app-message-bar>
+</div>

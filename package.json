@@ -13,6 +13,10 @@
   },
   "main": "server/index.js",
   "private": true,
+  "engines": {
+    "node": "10.9.0",
+    "npm": "6.4.1"
+  },
   "dependencies": {
     "@angular/animations": "^6.1.7",
     "@angular/cdk": "^6.2.0",

@@ -32,6 +32,7 @@ app.get('*', (req, res) => {
 
 io.on('connection', function (socket) {
   let user = null;
+  io.emit('USER_COUNT', ++userCount);
 
   socket.on('AUTH_USERNAME', (username) => {
     console.log('AUTH_USERNAME');
@@ -46,7 +47,6 @@ io.on('connection', function (socket) {
       userId: user.userId,
       userKey: user.userKey
     });
-    io.emit('USER_COUNT', ++userCount);
   });
   socket.on('AUTH_USER_ID', (userId) => {
     console.log('AUTH_USER_ID');
@@ -63,7 +63,6 @@ io.on('connection', function (socket) {
         username: user.username,
         userKey: user.userKey
       });
-      io.emit('USER_COUNT', ++userCount);
     }
   });
   socket.on('SEND_MESSAGE', (text) => {
