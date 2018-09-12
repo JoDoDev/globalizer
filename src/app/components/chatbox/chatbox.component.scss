@@ -19,3 +19,14 @@
     background: rgba(0, 0, 0, .9);
   }
 }
+
+.message {
+  float: left;
+  clear: both;
+
+  &.own {
+    float: right;
+    background-color: #e91e63;
+  }
+}
+

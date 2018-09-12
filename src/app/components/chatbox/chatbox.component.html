@@ -1,3 +1,8 @@
-<p *ngFor="let message of messages$ | async">
-  {{message.text}}
-</p>
+<div
+  *ngFor="let message of messages$ | async"
+  [class.own]="message.userKey == userKey" class="message">
+  <p>
+    {{message.text}}
+  </p>
+  <br>
+</div>

@@ -13,10 +13,17 @@ export class MessagingService {
 
   constructor(private socketService: SocketService) {
     this.socketService.subscribe(SocketEventType.MESSAGES, (messages: Message[]) => {
-      console.log("received messages: ", messages);
+      console.log('received messages: ', messages);
       this.messages = this.messages.concat(messages);
       this.messages$.next(this.messages);
     });
+
+    this.socketService.subscribe(SocketEventType.INITIAL_MESSAGES, (messages: Message[]) => {
+      console.log('received initial messages: ', messages);
+      this.messages = messages;
+      this.messages$.next(this.messages);
+    });
+    this.socketService.send(SocketEventType.INITIAL_MESSAGES);
   }
 
   public send(message: string) {

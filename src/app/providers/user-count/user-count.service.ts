@@ -15,6 +15,6 @@ export class UserCountService {
       this.userCount$.next(userCount);
     });
 
-    this.socketService.send(SocketEventType.USER_COUNT)
+    this.socketService.send(SocketEventType.USER_COUNT);
   }
 }

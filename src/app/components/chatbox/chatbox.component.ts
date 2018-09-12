@@ -12,8 +12,12 @@ export class ChatboxComponent implements OnInit {
   @Input()
   messages$: Subject<Message[]>;
 
+  @Input()
+  userKey: string;
 
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
