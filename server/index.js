@@ -9,6 +9,7 @@ const PUBLIC_PATH = path.join(__dirname, '../public');
 const PORT = process.env.PORT || 8080;
 const IS_PRODUCTION = process.env.GLOBALIZER_ENV === 'PRODUCTION';
 const USERS = [];
+const MESSAGES = [];
 let userCount = 0;
 
 const app = express();
@@ -65,6 +66,9 @@ io.on('connection', function (socket) {
       });
     }
   });
+  socket.on('INITIAL_MESSAGES', () => {
+    io.emit('INITIAL_MESSAGES', MESSAGES);
+  });
   socket.on('SEND_MESSAGE', (text) => {
     console.log('SEND_MESSAGE');
 
@@ -73,12 +77,14 @@ io.on('connection', function (socket) {
         success: false
       })
     } else {
-      io.emit('MESSAGES', [{
+      const message = {
         text,
         userKey: user.userKey,
         username: user.username,
         time: new Date().toISOString()
-      }])
+      };
+      io.emit('MESSAGES', [message]);
+      MESSAGES.push(message);
     }
   });
   socket.on('USER_COUNT', () => {

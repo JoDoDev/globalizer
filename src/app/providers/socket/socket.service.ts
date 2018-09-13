@@ -29,7 +29,7 @@ export class SocketService {
   }
 
   public send(eventType: SocketEventType, obj?: any) {
-    if (obj != undefined)
+    if (obj !== undefined)
       this.socket.emit(eventType, obj);
     else
       this.socket.emit(eventType);

@@ -1,5 +1,5 @@
 <div class="container">
   <app-chat-title-bar [userCount$]="userCount$"></app-chat-title-bar>
-  <app-chatbox [messages$]="messages$"></app-chatbox>
+  <app-chatbox [messages$]="messages$" [userKey]="userKey"></app-chatbox>
   <app-message-bar [(message)]="newMessage" (send)="sendMessage()"></app-message-bar>
 </div>
