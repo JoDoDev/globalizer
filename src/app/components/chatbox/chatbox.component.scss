@@ -1,6 +1,11 @@
 :host {
   overflow-y: scroll;
 
+  background-image: url("../../../assets/backgrounds/fir-tree.jpg");
+  background-position: center;
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+
   &::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -23,10 +28,29 @@
 .message {
   float: left;
   clear: both;
+  margin: 5px;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #fff;
+  max-width: 80%;
+
+  .username {
+    text-decoration: underline;
+  }
+
+  .text {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    word-wrap: break-word;
+  }
+
+  .time {
+    float: right;
+  }
 
   &.own {
+    background-color: #d7f7c9;
     float: right;
-    background-color: #e91e63;
   }
 }
 

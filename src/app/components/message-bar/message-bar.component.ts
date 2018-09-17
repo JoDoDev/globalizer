@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-message-bar',
   templateUrl: './message-bar.component.html',
   styleUrls: ['./message-bar.component.scss']
 })
-export class MessageBarComponent implements OnInit {
+export class MessageBarComponent {
   messageValue = '';
 
   @Output() send = new EventEmitter();
@@ -21,10 +21,9 @@ export class MessageBarComponent implements OnInit {
     this.messageChange.emit(this.messageValue);
   }
 
-  constructor() {
-  }
-
-  ngOnInit() {
+  sendMessage() {
+    this.send.emit();
+    this.messageValue = '';
   }
 
 }

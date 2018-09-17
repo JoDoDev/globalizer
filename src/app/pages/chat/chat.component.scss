@@ -1,6 +1,8 @@
 :host {
   height: 100%;
   display: grid;
+
+  overflow: hidden;
 }
 
 .container {
