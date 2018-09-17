@@ -1,4 +1,4 @@
-<form #sendMessageForm="ngForm" (ngSubmit)="sendMessage()">
+<form #sendMessageForm="ngForm" (ngSubmit)="sendMessage()" autocomplete="off">
   <mat-form-field class="full-width">
     <input matInput placeholder="message" type="text" name="message" [ngModel]="messageValue" (ngModelChange)="message = $event">
   </mat-form-field>
