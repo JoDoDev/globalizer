@@ -42,20 +42,15 @@
     margin-top: 6px;
     margin-bottom: 6px;
     word-wrap: break-word;
-
   }
 
   .time {
-    float: left;
+    float: right;
   }
 
   &.own {
     background-color: #d7f7c9;
     float: right;
-
-    .time {
-      float: right;
-    }
   }
 }
 

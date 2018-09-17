@@ -1,9 +1,13 @@
-<div
-  *ngFor="let message of messages$ | async"
-  [class.own]="message.userKey == userKey" class="message">
-  <span class="username">{{message.username}}</span>
-  <p class="text">
-    {{message.text}}
-  </p>
-  <span class="time">{{message.time | date : "HH:MM"}}</span>
+<div #scrollContainer>
+  <div
+    *ngFor="let message of messages$ | async; let last = last"
+    [class.own]="message.userKey == userKey" class="message" #messageContainer>
+      <span class="username">{{message.username}}</span>
+      <p class="text">
+        {{message.text}}
+      </p>
+      <span class="time">{{message.time | date: "HH:MM"}}</span>
+
+    {{ last ? scrollInView(messageContainer) : ''}}
+  </div>
 </div>

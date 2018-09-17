@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Subject} from 'rxjs';
 import {Message} from '../../types/message.type';
 
@@ -7,7 +7,7 @@ import {Message} from '../../types/message.type';
   templateUrl: './chatbox.component.html',
   styleUrls: ['./chatbox.component.scss']
 })
-export class ChatboxComponent implements OnInit {
+export class ChatboxComponent {
 
   @Input()
   messages$: Subject<Message[]>;
@@ -15,11 +15,15 @@ export class ChatboxComponent implements OnInit {
   @Input()
   userKey: string;
 
+  @Input()
+  scrollToBottom = true;
 
   constructor() {
   }
 
-  ngOnInit() {
+  scrollInView(el) {
+    if (this.scrollToBottom)
+      el.scrollIntoView();
   }
 
 }
