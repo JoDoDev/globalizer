@@ -25,7 +25,7 @@ jobs:
 
       - run:
           name: Start Server
-          command: npm run start
+          command: PORT=4200 npm run start
           background: true
 
       - run: npm run cypress-run
