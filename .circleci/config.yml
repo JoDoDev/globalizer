@@ -28,4 +28,8 @@ jobs:
           command: PORT=4200 npm run start
           background: true
 
+      - run:
+          name: Wait Server Start
+          command: wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 -qO- http://localhost:4200/ping
+
       - run: npm run cypress-record
