@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --prod --output-path=public --aot",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "cypress-run": "cypress run"
   },
   "main": "server/index.js",
   "private": true,
