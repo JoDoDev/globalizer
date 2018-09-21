@@ -28,4 +28,4 @@ jobs:
           command: PORT=4200 npm run start
           background: true
 
-      - run: npm run cypress-run
+      - run: npm run cypress-record
