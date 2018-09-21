@@ -6,7 +6,7 @@
     "serve": "ng serve",
     "start": "node server/index.js",
     "build": "ng build",
-    "build:prod": "ng build --prod --output-path=public --aot",
+    "build:prod": "ng build --prod --output-path=public --aot --progress=false",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
