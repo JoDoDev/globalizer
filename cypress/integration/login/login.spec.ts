@@ -10,7 +10,9 @@ context('Login', () => {
 
     cy.get('[data-cy="submit"]').click();
 
-    cy.location("pathname").should("eq", "/");
+    cy.location("pathname").should("eq", "/").should(() => {
+      expect(localStorage.getItem("USER_ID")).to.not.eq(null);
+    });
 
   });
 });
