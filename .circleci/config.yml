@@ -25,7 +25,7 @@ jobs:
 
       - run:
           name: Start Server
-          command: npm start
+          command: npm run start
           background: true
 
-      - run: npm start cypress-run
+      - run: npm run cypress-run
