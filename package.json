@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
-    "build:prod": "ng build --prod --output-path=public --aot --progress=false",
+    "build:prod": "ng build --prod --configuration='production' --progress=false",
+    "build:e2e": "ng build --prod --configuration='e2e' --progress=false",
     "test": "ng test",
     "lint": "ng lint",
     "start": "node server/index.js",
