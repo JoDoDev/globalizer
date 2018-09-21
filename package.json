@@ -11,6 +11,7 @@
     "e2e": "ng e2e",
     "postinstall": "ng build --prod --output-path=public --aot",
     "cypress": "cypress open",
+    "cypress-run": "cypress run",
     "cypress-record": "cypress run --record"
   },
   "main": "server/index.js",
