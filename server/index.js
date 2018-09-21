@@ -27,6 +27,10 @@ app.use((req, res, next) => {
 
 app.use(express.static(PUBLIC_PATH));
 
+app.get('/ping', (req, res) => {
+  res.send('pong')
+});
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(PUBLIC_PATH, 'index.html'))
 });

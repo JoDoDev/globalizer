@@ -1,0 +1,39 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cypress/base:8
+        environment:
+          ## this enables colors in the output
+          TERM: xterm
+    working_directory: ~/app
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          key: v1-deps-{{ .Branch }}
+          key: v1-deps
+
+      - run:
+          name: Install Dependencies
+          command: npm install
+
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - ~/.cache  ## cache both yarn and Cypress!
+
+      - run:
+          name: Build Angular
+          command: npm run build:prod
+
+      - run:
+          name: Start Server
+          command: PORT=4200 npm run start
+          background: true
+
+      - run:
+          name: Wait Server Start
+          command: wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 -qO- http://localhost:4200/ping
+
+      - run: npm run cypress-record

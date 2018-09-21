@@ -6,10 +6,14 @@
     "serve": "ng serve",
     "start": "node server/index.js",
     "build": "ng build",
+    "build:prod": "ng build --prod --output-path=public --aot --progress=false",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod --output-path=public --aot"
+    "postinstall": "npm run build:prod",
+    "cypress": "cypress open",
+    "cypress-run": "cypress run",
+    "cypress-record": "cypress run --record"
   },
   "main": "server/index.js",
   "private": true,
@@ -51,6 +55,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^10.9.4",
     "codelyzer": "^4.4.4",
+    "cypress": "^3.1.0",
     "jasmine-core": "^3.2.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^3.0.0",
