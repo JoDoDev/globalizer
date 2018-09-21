@@ -104,4 +104,6 @@ io.on('connection', function (socket) {
 });
 
 
-server.listen(PORT);
+server.listen(PORT, () => {
+  console.log(`starting server on PORT:${PORT} in PRODUCTION:${IS_PRODUCTION}`)
+});
