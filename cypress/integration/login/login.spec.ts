@@ -6,6 +6,11 @@ context('Login', () => {
   });
 
   it('login with username', () => {
+    cy.get('[data-cy="username"]').type("DonatoW");
+
+    cy.get('[data-cy="submit"]').click();
+
+    cy.location("pathname").should("eq", "/");
 
   });
 });
