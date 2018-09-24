@@ -40,3 +40,6 @@ Thumbs.db
 
 # Angular builds
 public/*
+
+# capress videos
+cypress/videos

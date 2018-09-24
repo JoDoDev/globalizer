@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "start": "node server/index.js",
-    "cypress": "CYPRESS_baseUrl='http://localhost:4200' CYPRESS_BACKEND_API='http://localhost:8080' cypress open",
+    "cypress:open": "CYPRESS_baseUrl='http://localhost:4200' CYPRESS_BACKEND_API='http://localhost:8080' cypress open",
+    "cypress:run": "CYPRESS_baseUrl='http://localhost:4200' CYPRESS_BACKEND_API='http://localhost:8080' cypress run",
     "postinstall": "npm run build:prod",
     "build:circleci": "ng build --prod --configuration='e2e' --progress=false",
     "cypress:circleci": "CYPRESS_baseUrl='http://localhost:4200' CYPRESS_BACKEND_API='http://localhost:4200' cypress run --record"
