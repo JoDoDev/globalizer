@@ -28,6 +28,19 @@ context('Chat', () => {
 
     sendMessage(messageText);
 
+    cy.visit('/');
+
+    cy.get('[data-cy="chatbox"]').children().as('message');
+
+    cy.get('@message').should('have.class', 'own');
+    cy.get('@message').children('p').should('contain', messageText)
+  });
+
+  it('get Previous message as other user', () => {
+    const messageText = "someMessageText";
+
+    sendMessage(messageText);
+
     cy.login('testUsername2');
     cy.visit('/');
 
