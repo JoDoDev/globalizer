@@ -4,10 +4,10 @@
   <form #loginForm="ngForm" (ngSubmit)="login()">
 
     <mat-form-field class="full-width">
-      <input matInput placeholder="Username" type="text" name="username" [(ngModel)]="username">
+      <input matInput placeholder="Username" type="text" name="username" [(ngModel)]="username" data-cy="username">
     </mat-form-field>
 
-    <button mat-raised-button color="primary" class="full-width" type="submit">
+    <button mat-raised-button color="primary" class="full-width" type="submit" data-cy="submit">
       Login
     </button>
   </form>

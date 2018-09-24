@@ -1,4 +1,4 @@
-<div #scrollContainer>
+<div #scrollContainer data-cy="chatbox">
   <div
     *ngFor="let message of messages$ | async; let last = last"
     [class.own]="message.userKey == userKey" class="message" #messageContainer>

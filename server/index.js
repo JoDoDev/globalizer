@@ -9,7 +9,7 @@ const PUBLIC_PATH = path.join(__dirname, '../public');
 const PORT = process.env.PORT || 8080;
 const IS_PRODUCTION = process.env.GLOBALIZER_ENV === 'PRODUCTION';
 const USERS = [];
-const MESSAGES = [];
+let MESSAGES = [];
 let userCount = 0;
 
 const app = express();
@@ -30,6 +30,14 @@ app.use(express.static(PUBLIC_PATH));
 app.get('/ping', (req, res) => {
   res.send('pong')
 });
+
+if (!IS_PRODUCTION) {
+  app.post('/clear', (req, res) => {
+    console.log('clear');
+    MESSAGES = [];
+    res.send('ok')
+  });
+}
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(PUBLIC_PATH, 'index.html'))
@@ -104,4 +112,6 @@ io.on('connection', function (socket) {
 });
 
 
-server.listen(PORT);
+server.listen(PORT, () => {
+  console.log(`starting server on PORT:${PORT} in PRODUCTION:${IS_PRODUCTION}`)
+});

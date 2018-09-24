@@ -15,6 +15,7 @@ export class SocketService {
     } else {
       this.socket = io.connect(environment.baseUrl);
     }
+    (window as any).io = this.socket;
   }
 
   public subscribe(eventType: SocketEventType, fun: (obj: any) => any): () => void {
