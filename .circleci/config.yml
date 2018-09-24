@@ -25,7 +25,7 @@ jobs:
 
       - run:
           name: Build Angular
-          command: npm run build:e2e
+          command: npm run build:circleci
 
       - run:
           name: Start Server
@@ -36,4 +36,4 @@ jobs:
           name: Wait Server Start
           command: wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 -qO- http://localhost:4200/ping
 
-      - run: npm run cypress:e2e
+      - run: npm run cypress:circleci
