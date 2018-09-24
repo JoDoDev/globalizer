@@ -2,7 +2,8 @@
 
 context('Login', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:4200');
+    cy.clearServer();
+    cy.visit('/');
   });
 
   it('re-route to Login', () => {

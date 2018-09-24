@@ -5,14 +5,13 @@
     "ng": "ng",
     "serve": "ng serve",
     "build:prod": "ng build --prod --configuration='production' --progress=false",
-    "build:e2e": "ng build --prod --configuration='e2e' --progress=false",
     "test": "ng test",
     "lint": "ng lint",
     "start": "node server/index.js",
-    "cypress": "cypress open",
-    "cypress:run": "cypress run",
-    "cypress:record": "cypress run --record",
-    "postinstall": "npm run build:prod"
+    "cypress": "CYPRESS_baseUrl='http://localhost:4200' CYPRESS_BACKEND_API='http://localhost:8080' cypress open",
+    "postinstall": "npm run build:prod",
+    "build:circleci": "ng build --prod --configuration='e2e' --progress=false",
+    "cypress:circleci": "CYPRESS_baseUrl='http://localhost:4200' CYPRESS_BACKEND_API='http://localhost:4200' cypress run --record"
   },
   "main": "server/index.js",
   "private": true,
