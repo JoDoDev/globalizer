@@ -41,7 +41,7 @@
 
 % tables
 \usepackage{tabularx}
-
+\usepackage{makecell}
 
 % make code copyable
 \lstset{
@@ -162,8 +162,8 @@ literate={*}{{\char42}}1
     \begin{table}[h]
       \begin{tabularx}{\textwidth}{|l|l|l|X|}
         \hline
-        \textbf{Version} & \textbf{Datum} & \textbf{Ausführende Stelle} & \textbf{Bemerkung}                                                          \\ \hline
-        1                & 21.09.2018     & Projektteam                 & Erste Version des Dokuments erstellt sdf sdfasd asdfas a sdfa sdfasd sadfas \\ \hline
+        \textbf{Version} & \textbf{Datum} & \textbf{Ausführende Stelle} & \textbf{Bemerkung}                     \\ \hline
+        1                & 21.09.2018     & Projektteam                 & \makecell[l]{Erste Version des Dokuments \\ erstellt}  \\ \hline
       \end{tabularx}
     \end{table}
 
