@@ -33,10 +33,6 @@
 % display code
 \usepackage{listings}
 
-% tables
-\usepackage{tabu}
-\usepackage{array}
-
 % icons
 \usepackage{fontawesome}
 
@@ -142,28 +138,40 @@ literate={*}{{\char42}}1
     dem Entwicklungsteam und dem aktuellen Stand.
 
   \subsection{Projektmitarbeiter}
-    \begin{tabu} to \textwidth  {|l|l|X|l|}
-      \hline
-      \textbf{Name} & \textbf{Vorname}  & \textbf{E-Mail}                & \textbf{Funktion}     \\ \hline
-      Koller        & Jonas             & jonas.koller@gmx.ch            & Projektleiter         \\ \hline
-      Wolfisberg    & Donato            & donato.wolfisberg@gmail.com    & Entwickler            \\ \hline
-      Gian          & Ott               & gian\_ott@sluz.ch              & Prüfer                \\ \hline
-      Manuel        & Troxler           & manuel\_troxler@sluz.ch        & Prüfer                \\ \hline
-    \end{tabu}
+    \begin{table}[h]
+      \resizebox{\textwidth}{!}{%
+      \begin{tabular}{|l|l|l|l|}
+        \hline
+        \textbf{Name} & \textbf{Vorname}  & \textbf{E-Mail}                & \textbf{Funktion}     \\ \hline
+        Koller        & Jonas             & jonas.koller@gmx.ch            & Projektleiter         \\ \hline
+        Wolfisberg    & Donato            & donato.wolfisberg@gmail.com    & Entwickler            \\ \hline
+        Gian          & Ott               & gian\_ott@sluz.ch              & Prüfer                \\ \hline
+        Manuel        & Troxler           & manuel\_troxler@sluz.ch        & Prüfer                \\ \hline
+      \end{tabular}%
+      }
+    \end{table}
 
   \subsection{Änderungskontrolle}
-    \begin{tabu} to \textwidth  {|l|l|l|X|}
-      \hline
-      \textbf{Version} & \textbf{Datum} & \textbf{Ausführende Stelle}     & \textbf{Funktion}                                 \\ \hline
-      1                & 21.09.2018     & Projektteam                     & Erste Version \newline des Dokuments erstellt     \\ \hline
-    \end{tabu}
+    \begin{table}[h]
+      \resizebox{\textwidth}{!}{%
+      \begin{tabular}{|l|l|l|l|}
+        \hline
+        \textbf{Version} & \textbf{Datum} & \textbf{Ausführende Stelle} & \textbf{Bemerkung}                                                             \\ \hline
+        1                & 21.09.2018     & Projektteam                 & \begin{tabular}[c]{@{}l@{}}Erste Version\\ des Dokuments erstellt\end{tabular} \\ \hline
+      \end{tabular}%
+      }
+    \end{table}
 
   \subsection{Prüfung}
-    \begin{tabu} to \textwidth  {|l|l|l|X|l|}
-      \hline
-      \textbf{Version} & \textbf{Datum} & \textbf{Ausführende Stelle}   & \textbf{Erreichter \newline Status}  & \textbf{Visum}  \\ \hline
-                       &                &                               &                             &                 \\ \hline
-    \end{tabu}
+    \begin{table}[h]
+      \resizebox{\textwidth}{!}{%
+      \begin{tabular}{|l|l|l|l|l|}
+        \hline
+        \textbf{Version} & \textbf{Datum} & \textbf{Ausführende Stelle}   & \textbf{Erreichter Status}  & \textbf{Visum}  \\ \hline
+                         &                &                               &                             &                 \\ \hline
+      \end{tabular}%
+      }
+    \end{table}
 
   \newpage
   \tableofcontents
