@@ -1,0 +1,137 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% clickable links in pdf
+\usepackage{hyperref}
+
+% make title variable available
+\usepackage{titling}
+
+% create own header footer
+\usepackage{fancyhdr}
+
+% images
+\usepackage{graphicx}
+
+% grafics powerfull and hard
+\usepackage{tikz}
+
+% character spacing to fill line
+\usepackage{microtype}
+
+% image placement with [H]
+\usepackage{float}
+
+% fancy quotes
+\usepackage{epigraph}
+
+% extra symbols
+\usepackage{textcomp}
+
+% display code
+\usepackage{listings}
+
+% make code copyable
+\lstset{
+upquote=true,
+columns=fullflexible,
+literate={*}{{\char42}}1
+         {-}{{\char45}}1
+}
+
+\newsavebox{\picbox}
+
+\graphicspath{ {./images} }
+
+% command for rounded corners
+\newcommand{\cutpic}[3]{
+  \savebox{\picbox}{\includegraphics[width=#2]{#3}}
+  \tikz\node [draw, rounded corners=#1, line width=4pt,
+    color=white, minimum width=\wd\picbox,
+    minimum height=\ht\picbox, path picture={
+      \node at (path picture bounding box.center) {
+        \usebox{\picbox}};
+    }] {};}
+
+
+\title{
+  \Huge
+  \textbf{Globalizer} \\
+  \vspace{0.2cm}
+  \LARGE
+  Anforderungsspezifikationen
+}
+
+\date{25-10-2018}
+\author{
+  Jonas Koller \\
+  Donato Wolfisberg
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thedate}
+\lhead{Globalizer Anforderungsspezifikationen}
+\rfoot{\thepage}
+\lfoot{Jonas Koller \& Donato Wolfisberg}
+
+
+\begin{document}
+  \begin{titlepage}
+    \pagenumbering{gobble}
+
+    \begin{center}
+      \vspace*{-2cm}
+      \cutpic{0.8cm}{4cm}{./images/logo.jpg}
+
+      \thetitle
+
+      \vspace{2cm}
+
+      \textbf{\theauthor}
+    \end{center}
+
+    \vfill
+
+    \begin{figure}[H]
+        \makebox[\linewidth]{
+            \includegraphics[width=1.3\linewidth]{./images/globe.jpg}
+        }
+        \vspace*{-3cm}
+    \end{figure}
+  \end{titlepage}
+
+
+
+  \newpage
+
+  \section{Zweck des Dokuments}
+    In diesem Dokument werden wir die Anforderungen an unser Projekt “Globalizer”.
+    Das Projekt gilt im aktuellen Zustand als angenommen,
+    da der Projektantrag durch Herr Manfred Rötheli angenommen wurde. Wir werden be\-schreiben,
+    welche Anforderungen wir erfüllen möchten (“soll”-Anforderungen) und welche optionalen
+    “kann”-Anforderungen wir eventuell auch erfüllen können.
+    Es soll eine Übersicht für unser Vorhaben sein. Weiter sollen unsere Prozesse
+    so gut wie möglich durch Grafiken dargestellt und visualisiert werden.
+    Bei Fragen wenden sie sich an den Projektleiter (jonas.koller@gmx.ch).
+
+  \section{Allgemeine Informationen}
+    Hier folgt eine kurze Auflistung der Informationen zu diesem Dokument,
+    dem Entwicklungsteam und dem aktuellen Stand.
+
+
+  \pagenumbering{Roman}
+  \tableofcontents
+  \newpage
+
+  \pagenumbering{arabic}
+
+  \section{Montag}
+
+
+
+
+
+\end{document}
