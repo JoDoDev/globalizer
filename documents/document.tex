@@ -159,21 +159,62 @@ literate={*}{{\char42}}1
 
   \section{Gesamtüberblick}
     \subsection{Allgemeine Beschreibung}
+      Der Auftraggeber will für die Schule BBZW Sursee eine Chat Applikation entwickeln lassen.
+      Für die Kommunikation zwischen den Schülern wie auch zum Lehrer. Es ist ihm wichtig dass
+      die Anwender der Applikation komplett Anonym bleiben können. Die Applikation soll
+      Modern und schnell als Webseite daher kommen und sowohl im Browser als auch
+      auf mobilen Geräten funktionieren.
+
     \subsection{Ziele}
+      Die Chat Applikation soll folgende Eigenschaften haben.
+
+      \begin{enumerate}
+        \item Anonymität der Anwender: Die Benutzer können sich Anonym auf der Applikation aufhalten.
+          Da keinerlei Informationen vom Benutzer gespeichert werden sind auch automatisch
+          die Anforderungen an den Datenschutz erfüllt.
+        \item Modernes Design: Das Ziel besteht aus jungen Menschen die Gewohnt sind mit
+          Informatik Instrumenten Arbeiten. Das erhöht die Akzeptanz der Anwendung.
+        \item Kostengünstiger Betrieb: Der Auftraggeber verfügt nur über ein minimales Budget
+          sodass die Applikation mit geringen Unterhalt und Hosting kosten auskommen muss.
+        \item Hohe Verfügbarkeit: Die Applikation sollte eine Verfügbarkeit von 99\% haben,
+          ohne dass ein Administration betrieben werden muss.
+        \item Geschwindigkeit: Eine Chat Applikation beruht auf einem ständigen fragen und antworten. \newline
+          Daher muss die Applikation sehr schnell sein.
+      \end{enumerate}
+
     \subsection{Spezielle Aspekte}
+      Weil die Applikation auf Anonymität beruht werden wir weder Ip Adressen noch Persönliche daten speichern,
+      haben wir auch keine Sensible Nutzerdaten die wir noch speziell schützen müssten.
 
 
   \section{Analyse des IST-Systems}
+    Es ist bis jetzt noch kein System vorhanden. Wir können alles von vorne Entscheiden.
 
   \section{Zielkatalog}
+    In diesem Kapitel werden die Voraussetzungen an unser System genannt.
+
     \subsection{Beschreibung des SOLL-Systems}
       \subsubsection{Aktivitätsdiagramm}
+        Bild wird noch übernommen
       \subsubsection{Externes Use Case Diagramm}
+        Bild wird noch übernommen
       \subsubsection{Internes Use Case Diagramm}
+        Bild wird noch übernommen
 
     \subsection{Zielsetzungen}
       \subsubsection{Muss-Ziele}
+        \begin{enumerate}
+          \item Globalen Gruppen Chat
+          \item Hinterlegen eines Benutzernamens
+          \item Session Anmeldung über UserKey
+          \item PWA
+        \end{enumerate}
+
       \subsubsection{Kann-Ziele}
+        \begin{enumerate}
+          \item Private Chats zwischen zwei Personen
+          \item Hinterlegen eines Google Accounts
+        \end{enumerate}
 
     \subsection{Akteure}
 
