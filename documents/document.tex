@@ -37,7 +37,10 @@
 \usepackage{fontawesome}
 
 % set dimmensions of page
-\usepackage[ footskip=80pt]{geometry}
+\usepackage[footskip=80pt]{geometry}
+
+% tables
+\usepackage{tabularx}
 
 
 % make code copyable
@@ -139,38 +142,32 @@ literate={*}{{\char42}}1
 
   \subsection{Projektmitarbeiter}
     \begin{table}[h]
-      \resizebox{\textwidth}{!}{%
-      \begin{tabular}{|l|l|l|l|}
+      \begin{tabularx}{\textwidth}{|l|l|X|l|}
         \hline
         \textbf{Name} & \textbf{Vorname}  & \textbf{E-Mail}                & \textbf{Funktion}     \\ \hline
         Koller        & Jonas             & jonas.koller@gmx.ch            & Projektleiter         \\ \hline
         Wolfisberg    & Donato            & donato.wolfisberg@gmail.com    & Entwickler            \\ \hline
         Gian          & Ott               & gian\_ott@sluz.ch              & Prüfer                \\ \hline
         Manuel        & Troxler           & manuel\_troxler@sluz.ch        & Prüfer                \\ \hline
-      \end{tabular}%
-      }
+      \end{tabularx}%
     \end{table}
 
   \subsection{Änderungskontrolle}
     \begin{table}[h]
-      \resizebox{\textwidth}{!}{%
-      \begin{tabular}{|l|l|l|l|}
+      \begin{tabularx}{\textwidth}{|l|l|l|X|}
         \hline
-        \textbf{Version} & \textbf{Datum} & \textbf{Ausführende Stelle} & \textbf{Bemerkung}                                                             \\ \hline
-        1                & 21.09.2018     & Projektteam                 & \begin{tabular}[c]{@{}l@{}}Erste Version\\ des Dokuments erstellt\end{tabular} \\ \hline
-      \end{tabular}%
-      }
+        \textbf{Version} & \textbf{Datum} & \textbf{Ausführende Stelle} & \textbf{Bemerkung}                                                          \\ \hline
+        1                & 21.09.2018     & Projektteam                 & Erste Version des Dokuments erstellt sdf sdfasd asdfas a sdfa sdfasd sadfas \\ \hline
+      \end{tabularx}
     \end{table}
 
   \subsection{Prüfung}
     \begin{table}[h]
-      \resizebox{\textwidth}{!}{%
-      \begin{tabular}{|l|l|l|l|l|}
+      \begin{tabularx}{\textwidth}{|l|l|l|X|l|}
         \hline
         \textbf{Version} & \textbf{Datum} & \textbf{Ausführende Stelle}   & \textbf{Erreichter Status}  & \textbf{Visum}  \\ \hline
                          &                &                               &                             &                 \\ \hline
-      \end{tabular}%
-      }
+      \end{tabularx}
     \end{table}
 
   \newpage
