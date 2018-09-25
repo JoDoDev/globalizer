@@ -40,6 +40,9 @@
 % icons
 \usepackage{fontawesome}
 
+% set dimmensions of page
+\usepackage[ footskip=80pt]{geometry}
+
 
 % make code copyable
 \lstset{
@@ -72,7 +75,8 @@ literate={*}{{\char42}}1
   Anforderungsspezifikationen
 }
 
-\date{25.10.2018}
+\date{27.10.2018}
+
 \author{
   Jonas Koller \\
   Donato Wolfisberg
@@ -80,11 +84,14 @@ literate={*}{{\char42}}1
 
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{\thedate}
-\lhead{Globalizer Anforderungsspezifikationen}
+\lhead{BBZW Sursee Rötheli Manfred}
+\rhead{Globalizer Anforderungsspezifikationen}
+\lfoot{Jonas Koller \& \\ Donato Wolfisberg}
+\cfoot{\thedate}
 \rfoot{\thepage}
-\lfoot{Jonas Koller \& Donato Wolfisberg}
 
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
 
 \begin{document}
   \begin{titlepage}
