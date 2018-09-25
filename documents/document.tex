@@ -33,6 +33,11 @@
 % display code
 \usepackage{listings}
 
+% tables
+\usepackage{tabu}
+\usepackage{array}
+
+
 % make code copyable
 \lstset{
 upquote=true,
@@ -64,7 +69,7 @@ literate={*}{{\char42}}1
   Anforderungsspezifikationen
 }
 
-\date{25-10-2018}
+\date{25.10.2018}
 \author{
   Jonas Koller \\
   Donato Wolfisberg
@@ -103,9 +108,8 @@ literate={*}{{\char42}}1
     \end{figure}
   \end{titlepage}
 
-
-
   \newpage
+  \pagenumbering{Roman}
 
   \section{Zweck des Dokuments}
     In diesem Dokument werden wir die Anforderungen an unser Projekt “Globalizer”.
@@ -121,8 +125,33 @@ literate={*}{{\char42}}1
     Hier folgt eine kurze Auflistung der Informationen zu diesem Dokument,
     dem Entwicklungsteam und dem aktuellen Stand.
 
+  \subsection{Projektmitarbeiter}
+    \begin{tabu} to \textwidth  {|l|l|X|l|}
+      \hline
+      \textbf{Name} & \textbf{Vorname}  & \textbf{E-Mail}                & \textbf{Funktion}     \\ \hline
+      Koller        & Jonas             & jonas.koller@gmx.ch            & Projektleiter         \\ \hline
+      Wolfisberg    & Donato            & donato.wolfisberg@gmail.com    & Entwickler            \\ \hline
+      Gian          & Ott               & gian\_ott@sluz.ch              & Prüfer                \\ \hline
+      Manuel        & Troxler           & manuel\_troxler@sluz.ch        & Prüfer                \\ \hline
+    \end{tabu}
 
-  \pagenumbering{Roman}
+  \subsection{Änderungskontrolle}
+    \begin{tabu} to \textwidth  {|l|l|l|X|}
+      \hline
+      \textbf{Version} & \textbf{Datum} & \textbf{Ausführende Stelle}     & \textbf{Funktion}                                 \\ \hline
+      1                & 21.09.2018     & Projektteam                     & Erste Version \newline des Dokuments erstellt     \\ \hline
+    \end{tabu}
+
+  \subsection{Prüfung}
+    \begin{tabu} to \textwidth  {|l|l|l|X|l|}
+      \hline
+      \textbf{Version} & \textbf{Datum} & \textbf{Ausführende Stelle}   & \textbf{Erreichter \newline Status}  & \textbf{Visum}  \\ \hline
+                       &                &                               &                             &                 \\ \hline
+    \end{tabu}
+
+  \newpage
+
+
   \tableofcontents
   \newpage
 
