@@ -178,10 +178,10 @@ literate={*}{{\char42}}1
 
   \subsection{Prüfung}
     \begin{table}[h]
-      \begin{tabularx}{\textwidth}{|l|l|l|X|l|}
+      \begin{tabularx}{\textwidth}{|l|l|X|}
         \hline
-        \textbf{Version} & \textbf{Datum} & \textbf{Ausführende Stelle}   & \textbf{Erreichter Status}  & \textbf{Visum}  \\ \hline
-                         &                &                               &                             &                 \\ \hline
+        \textbf{Version} & \textbf{Datum} & \textbf{Ausführende Stelle}     \\ \hline
+        4                 & 27.09.2018    & Gian Ott                        \\ \hline
       \end{tabularx}
     \end{table}
 
@@ -219,14 +219,11 @@ literate={*}{{\char42}}1
 
   \section{Zielkatalog}
     In diesem Kapitel werden die Voraussetzungen an unser System genannt.
-
     \subsection{Beschreibung des SOLL-Systems}
       \subsubsection{Aktivitätsdiagramm}
-        \includegraphics[width=\textwidth]{activity-diagram.png}
-      \subsubsection{Externes Use Case Diagramm}
-        \includegraphics[width=\textwidth]{extern-usecase.png}
-      \subsubsection{Internes Use Case Diagramm}
-        \includegraphics[width=\textwidth]{intern-usecase.png}
+        {\centering\includegraphics[height=0.9\textheight]{activity-diagram.png}}
+      \subsubsection{USER\_LOGIN\_STANDARD Use Case}
+        \includegraphics[width=\textwidth]{useCase_USER_LOGIN_STANDARD.png}
 
     \subsection{Zielsetzungen}
       \subsubsection{Muss-Ziele}
@@ -268,7 +265,7 @@ literate={*}{{\char42}}1
             {
             Falls der Benutzer die Nutzungsbedingungen akzeptiert, ist er auf der Chatseite und ist auf dem Server authentifiziert. Falls der Benutzer die Nutzungsbedingungen abgelehnt hat, ist er wieder im Ausgangsbildschirm.
             }
-            
+
         \requirementTable
             {USER\_LOGIN\_GOOGLE}
             {Nicht Angemeldeter Benutzer}
@@ -283,22 +280,22 @@ literate={*}{{\char42}}1
             Falls der Benutzer sich mit Google korrekt authentifiziert hat und  die Nutzungsbedingungen akzeptiert, ist er auf der Chatseite und ist auf dem Server authentifiziert. \newline
             Falls der Benutzer sich nicht via Google anmelden konnte oder er die Nutzungsbedingungen abgelehnt hat, ist er wieder im Ausgangsbildschirm.
             }
-            
+
         \requirementTable
             {NACHRICHT\_SENDEN}
             {Angemeldeter Benutzer}
             {Ist bereits angemeldet und auf der Chatseite}
             {Gibt eine Nachricht ein und sendet diese ab}
             {Die Nachricht kommt beim Server an und wird and die verschiedenen Benutzer gesendet und angezeigt.}
-            
+
         \requirementTable
             {NACHRICHT\_EMPFAGEN}
             {Angemeldeter Benutzer}
             {Ist bereits angemeldet und auf der Chatseite}
             {Bekommt eine Nachricht vom Server}
             {Die Nachricht wird auf der Applikation angezeigt}
-            
-                   
+
+
         \requirementTable
             {PRIVATER\_CHAT\_ANFRAGE}
             {Angemeldeter Benutzer}
@@ -312,8 +309,8 @@ literate={*}{{\char42}}1
             Falls er das bestätigt, erscheint beim zweiten Benutzer eine Meldung, dass Benutzer 1 ihn zu einem Privatchat eingeladen hat.
             }
             {Meldung an zweiten Benutzer verschickt mit der Anfrage für einen Privatchat.}
-            
-                   
+
+
         \requirementTable
             {PRIVATER\_CHAT\_ERSTELLEN\_PERSON\_\newline NIMMT\_AN }
             {Angemeldeter Benutzer}
@@ -325,8 +322,8 @@ literate={*}{{\char42}}1
             Der anfragende Benutzer erhält eine Meldung, dass der Benutzer zu seinem Privatchat gewechselt hat
             }
             {Der Benutzer und der anfragende Benutzer sind in einem Privatchat}
-            
-                   
+
+
         \requirementTable
             {PRIVATER\_CHAT\_ERSTELLEN\_PERSON\_\newline LEHNT\_AB}
             {Angemeldeter Benutzer}
@@ -342,14 +339,14 @@ literate={*}{{\char42}}1
             Der Benutzer bleibt im normalen Chat. \newline
             Beim anfragenden Benutzer erscheint die Meldung, dass kein Privatchat zustande gekommen ist.
             }
-            
+
 
       \subsubsection{Anforderungen aus der Sicht der privilegierten Benutzer}
         \requirementTable
             {BENUTZER\_AUS\_CHAT\_ENTFERNEN}
             {Admin}
             {
-            ist als Administrator angemeldet. \newline 
+            ist als Administrator angemeldet. \newline
             Ein momentan angemeldeter Benutzer verstösst im laufenden Chat gegen die Vorgaben des Chats.
             }
             {
@@ -357,8 +354,8 @@ literate={*}{{\char42}}1
             Im Chat erfolgt eine generierte Nachricht, “Benutzer xxx aus Chat entfernt”
             }
             {Der Benutzer ist nicht mehr im Chat angemeldet}
-            
-                           
+
+
         \requirementTable
             {CHAT\_HISTORIE\_AUS\_CHAT\_ENTFERNEN}
             {Admin}
@@ -370,9 +367,9 @@ literate={*}{{\char42}}1
             Der Administrator kann jederzeit, auch wenn der Benutzer nicht mehr angemeldet ist, die ganze Historie der Chats dieses Benutzer löschen.
             }
             {
-            Der Benutzer ist nicht mehr im Chat angemeldet
+            Die Chatnachrichten des jeweiligen Benutzers werden für alle gelöscht.
             }
-            
+
       \subsubsection{Anforderungen aus der Sicht des Systems}
          \requirementTable
             {UPDATEN}
@@ -380,13 +377,13 @@ literate={*}{{\char42}}1
             {Ist nicht zum ersten mal auf der Applikation}
             {Schaut ob eine neue Version verfügbar ist und aktualisiert zur neuesten Version.}
             {Ist auf der neusten Version der Applikation.}
-            
+
     \section{Mockups}
         \subsection{Android frame}
         \includegraphics[width=\textwidth]{mock-chat.png}
         \subsection{Desktop Chrome Login}
         \includegraphics[width=\textwidth]{frame-desktop-login.png}
-        
+
         \subsection{Desktop Chrome Chat}
         \includegraphics[width=\textwidth]{frame-desktop-chat.png}
 \end{document}
