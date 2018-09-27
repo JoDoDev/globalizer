@@ -256,15 +256,29 @@ literate={*}{{\char42}}1
             {USER\_LOGIN\_STANDARD}
             {Nicht Angemeldeter Benutzer}
             {Macht die Applikation das erste mal auf}
-            {Er gibt seinen gewünschten Namen ein. Es wird geprüft, ob es jemanden mit dem Namen schon gibt. Dann erscheint ein Popup mit den Nutzungsbedingungen. Der Benutzer kann nun Annehmen oder Abbrechen auswählen}
-            {Falls der Benutzer die Nutzungsbedingungen akzeptiert, ist er auf der Chatseite und ist auf dem Server authentifiziert. Falls der Benutzer die Nutzungsbedingungen abgelehnt hat, ist er wieder im Ausgangsbildschirm.}
+            {
+            Er gibt seinen gewünschten Namen ein. \newline
+            Es wird geprüft, ob es jemanden mit dem Namen schon gibt. \newline
+            Dann erscheint ein Popup mit den Nutzungsbedingungen. Der Benutzer kann nun Annehmen oder Abbrechen auswählen
+            }
+            {
+            Falls der Benutzer die Nutzungsbedingungen akzeptiert, ist er auf der Chatseite und ist auf dem Server authentifiziert. Falls der Benutzer die Nutzungsbedingungen abgelehnt hat, ist er wieder im Ausgangsbildschirm.
+            }
             
         \requirementTable
             {USER\_LOGIN\_GOOGLE}
             {Nicht Angemeldeter Benutzer}
             {Macht die Applikation das erste mal auf}
-            {Er klickt auf die Option “mit Google anmelden” Die Authentifizierung über Google erfolgt. Falls die Anmeldung gültig ist, dann erscheint ein Popup mit den Nutzungsbedingungen. Der Benutzer kann nun Annehmen oder Abbrechen auswählen. Falls keine gültige Anmeldung über Google erfolgt, wird der Anmeldeprozess wieder auf den Start gestellt.}
-            {Falls der Benutzer sich mit Google korrekt authentifiziert hat und  die Nutzungsbedingungen akzeptiert, ist er auf der Chatseite und ist auf dem Server authentifiziert. Falls der Benutzer sich nicht via Google anmelden konnte oder er die Nutzungsbedingungen abgelehnt hat, ist er wieder im Ausgangsbildschirm.}
+            {
+            Er klickt auf die Option “mit Google anmelden” \newline
+            Die Authentifizierung über Google erfolgt. \newline
+            Falls die Anmeldung gültig ist, dann erscheint ein Popup mit den Nutzungsbedingungen. Der Benutzer kann nun Annehmen oder Abbrechen auswählen. \newline
+            Falls keine gültige Anmeldung über Google erfolgt, wird der Anmeldeprozess wieder auf den Start gestellt.
+            }
+            {
+            Falls der Benutzer sich mit Google korrekt authentifiziert hat und  die Nutzungsbedingungen akzeptiert, ist er auf der Chatseite und ist auf dem Server authentifiziert. \newline
+            Falls der Benutzer sich nicht via Google anmelden konnte oder er die Nutzungsbedingungen abgelehnt hat, ist er wieder im Ausgangsbildschirm.
+            }
             
         \requirementTable
             {NACHRICHT\_SENDEN}
@@ -284,42 +298,76 @@ literate={*}{{\char42}}1
         \requirementTable
             {PRIVATER\_CHAT\_ANFRAGE}
             {Angemeldeter Benutzer}
-            {Benutzer ist bereits angemeldet und auf der Chatseite Es ist ein zweiter Benutzer ebenfalls im Chat angemeldet}
-            {Der Benutzer 1 macht einen Rechtsklick auf den zweiten Benutzer. Es erscheint ein Dialog, ob er einen Privatchat starten will. Falls er das bestätigt, erscheint beim zweiten Benutzer eine Meldung, dass Benutzer 1 ihn zu einem Privatchat eingeladen hat.}
+            {
+            Benutzer ist bereits angemeldet und auf der Chatseite. \newline
+            Es ist ein zweiter Benutzer ebenfalls im Chat angemeldet
+            }
+            {
+            Der Benutzer 1 macht einen Rechtsklick auf den zweiten Benutzer. \newline
+            Es erscheint ein Dialog, ob er einen Privatchat starten will. \newline
+            Falls er das bestätigt, erscheint beim zweiten Benutzer eine Meldung, dass Benutzer 1 ihn zu einem Privatchat eingeladen hat.
+            }
             {Meldung an zweiten Benutzer verschickt mit der Anfrage für einen Privatchat.}
             
                    
         \requirementTable
-            {PRIVATER\_CHAT\_ERSTELLEN\_PERSON\_NIMMT\_\newline ANNEHMEN }
+            {PRIVATER\_CHAT\_ERSTELLEN\_PERSON\_\newline NIMMT\_AN }
             {Angemeldeter Benutzer}
-            {Ist bereits angemeldet und auf der Chatseite Hat von einem anderen Benutzer eine Anfrage für einen Privatchat erhalten.}
-            {Der Benutzer macht einen Rechtsklick auf die Meldung Im Dialog klickt er auf “Zum Privaten Chat wechseln”. Der anfragende Benutzer erhält eine Meldung, dass der Benutzer zu seinem Privatchat gewechselt hat}
+            {
+            Ist bereits angemeldet und auf der Chatseite. \newline
+            Hat von einem anderen Benutzer eine Anfrage für einen Privatchat erhalten.}
+            {
+            Der Benutzer macht einen Rechtsklick auf die Meldung Im Dialog klickt er auf “Zum Privaten Chat wechseln”. \newline
+            Der anfragende Benutzer erhält eine Meldung, dass der Benutzer zu seinem Privatchat gewechselt hat
+            }
             {Der Benutzer und der anfragende Benutzer sind in einem Privatchat}
             
                    
         \requirementTable
-            {PRIVATER\_CHAT\_ERSTELLEN\_PERSON\_LEHNT\_\newline ABLEHNEN}
+            {PRIVATER\_CHAT\_ERSTELLEN\_PERSON\_\newline LEHNT\_AB}
             {Angemeldeter Benutzer}
-            {Ist bereits angemeldet und auf der Chatseite Hat von einem anderen Benutzer eine Anfrage für einen Privatchat erhalten}
-            {Der Benutzer macht einen Rechtsklick auf die Meldung Im Dialog klickt er auf “Nicht zum Privaten Chat wechseln” oder er ignoriert die Anfrage}
-            {Der Benutzer bleibt im normalen Chat Beim anfragenden Benutzer erscheint die Meldung, dass kein Privatchat zustande gekommen ist.}
+            {
+            Ist bereits angemeldet und auf der Chatseite. \newline
+            Hat von einem anderen Benutzer eine Anfrage für einen Privatchat erhalten
+            }
+            {
+            Der Benutzer macht einen Rechtsklick auf die Meldung Im Dialog klickt er auf “Nicht zum Privaten Chat wechseln”\newline
+            oder er ignoriert die Anfrage
+            }
+            {
+            Der Benutzer bleibt im normalen Chat. \newline
+            Beim anfragenden Benutzer erscheint die Meldung, dass kein Privatchat zustande gekommen ist.
+            }
             
 
       \subsubsection{Anforderungen aus der Sicht der privilegierten Benutzer}
         \requirementTable
             {BENUTZER\_AUS\_CHAT\_ENTFERNEN}
             {Admin}
-            {ist als Administrator angemeldet. EIn momentan angemeldeter Benutzer verstösst im laufenden Chat gegen die Vorgaben des Chats.}
-            {Falls ein Benutzer sich nicht an die Vorgaben hält, kann er aus dem Chat durch einen Administrator entfernt werden, indem sein Token gelöscht wird. Im Chat erfolgt eine generierte Nachricht, “Benutzer xxx aus Chat entfernt”}
+            {
+            ist als Administrator angemeldet. \newline 
+            Ein momentan angemeldeter Benutzer verstösst im laufenden Chat gegen die Vorgaben des Chats.
+            }
+            {
+            Falls ein Benutzer sich nicht an die Vorgaben hält, kann er aus dem Chat durch einen Administrator entfernt werden, indem sein Token gelöscht wird. \newline
+            Im Chat erfolgt eine generierte Nachricht, “Benutzer xxx aus Chat entfernt”
+            }
             {Der Benutzer ist nicht mehr im Chat angemeldet}
             
                            
         \requirementTable
             {CHAT\_HISTORIE\_AUS\_CHAT\_ENTFERNEN}
             {Admin}
-            {ist als Administrator angemeldet. Ein  Benutzer hat gegen die Vorgaben des Chats verstossen und seine Einträge müssen entfernt werden. Es ist egal, ob der Benutzer angemeldet ist oder nicht.}
-            {Der Administrator kann jederzeit, auch wenn der Benutzer nicht mehr angemeldet ist, die ganze Historie der Chats dieses Benutzer löschen.}
-            {Der Benutzer ist nicht mehr im Chat angemeldet}
+            {
+            ist als Administrator angemeldet. \newline
+            Ein  Benutzer hat gegen die Vorgaben des Chats verstossen und seine Einträge müssen entfernt werden. Es ist egal, ob der Benutzer angemeldet ist oder nicht.
+            }
+            {
+            Der Administrator kann jederzeit, auch wenn der Benutzer nicht mehr angemeldet ist, die ganze Historie der Chats dieses Benutzer löschen.
+            }
+            {
+            Der Benutzer ist nicht mehr im Chat angemeldet
+            }
             
       \subsubsection{Anforderungen aus der Sicht des Systems}
          \requirementTable
