@@ -145,11 +145,11 @@ literate={*}{{\char42}}1
   \end{center}
 
   \section{Zweck des Dokuments}
-    In diesem Dokument werden wir die Anforderungen an unser Projekt “Globalizer” formulieren. Das Projekt gilt im aktuellen Zustand als angenommen, da der Projektantrag durch Herr Manfred Rötheli angenommen wurde. Wir werden beschreiben, welche Anforderungen wir erfüllen möchten (“soll”-Anforderungen) und welche optionalen “kann”-Anforderungen wir eventuell auch erfüllen können. Es soll eine Übersicht für unser Vorhaben sein. Weiter sollen unsere Prozesse so gut wie möglich durch Grafiken dargestellt und visualisiert werden. \\
+    In diesem Dokument werden wir die Anforderungen an unser Projekt “Globalizer” formulieren. Das Projekt gilt im aktuellen Zustand als angenommen, da der Projekt\-antrag durch Herr Manfred Rötheli angenommen wurde. Wir werden beschreiben, welche Anforderungen wir erfüllen möchten (“soll”-Anforderungen) und welche optionalen “kann”-Anforderungen wir eventuell auch erfüllen können. Es soll eine Übersicht für unser Vorhaben sein. Weiter sollen unsere Prozesse so gut wie möglich durch Grafiken dargestellt und visualisiert werden. \\
     Bei Fragen wenden sie sich an den Projektleiter (jonas.koller@gmx.ch).
 
   \section{Allgemeine Informationen}
-    Hier folgt eine kurze Auflistung der Informationen zu diesem Dokument, dem Entwicklungsteam und dem aktuellen Stand.
+    Hier folgt eine kurze Auflistung der Informationen zu diesem Dokument, dem Ent\-wicklungsteam und dem aktuellen Stand.
 
   \subsection{Projektmitarbeiter}
     \begin{table}[h]
@@ -224,28 +224,30 @@ literate={*}{{\char42}}1
         {\centering\includegraphics[height=0.9\textheight]{activity-diagram.png}}
       \subsubsection{USER\_LOGIN\_STANDARD Use Case}
         \includegraphics[width=\textwidth]{useCase_USER_LOGIN_STANDARD.png}
+      \subsubsection{NACHRICHT\_SENDEN Use Case}
+        \includegraphics[width=\textwidth]{useCase_NACHRICHT_SENDEN.png}
 
     \subsection{Zielsetzungen}
       \subsubsection{Muss-Ziele}
         \begin{enumerate}
           \item \faGlobe~   Globaler Gruppen Chat
           \item \faUser~    Hinterlegen eines Benutzernamens
-          \item \faKey~     Benutzer muss den Chat später wieder aufnehmen können. z.B. cookies oder Session Storage
+          \item \faKey~     Benutzer muss den Chat später wieder aufnehmen können. z.B. Cookies oder Session Storage
           \item \faMobile~  Die Seite für Mobile geräte optimieren
         \end{enumerate}
 
       \subsubsection{Kann-Ziele}
         \begin{enumerate}
           \item \faUsers~   Private Chats zwischen zwei Personen
-          \item \faGoogle~  Authentifizierung über Google Accounts aber trotzdem anonyme
+          \item \faGoogle~  Authentifizierung über Google Accounts, aber trotzdem anonym
         \end{enumerate}
 
     \subsection{Akteure}
         \begin{table}[H]
           \begin{tabularx}{\textwidth}{|l|X|}
             \hline
-            Nicht Angemeldeter Benutzer & Hat nur die Berechtigung, sich anzumelden  \\ \hline
-            Angemeldeter Benutzer & Kann Nachrichten verschicken und erhalten  \\ \hline
+            Nicht angemeldeter Benutzer & Hat nur die Berechtigung, sich anzumelden  \\ \hline
+            angemeldeter Benutzer & Kann Nachrichten verschicken und erhalten  \\ \hline
             Administrator & Hat Zugriff auf Verwaltungsinformationen und auf die Datenbank \\ \hline
           \end{tabularx}
         \end{table}
@@ -255,7 +257,7 @@ literate={*}{{\char42}}1
       \subsubsection{Anforderungen aus der Sicht des unprivilegierten Benutzers}
         \requirementTable
             {USER\_LOGIN\_STANDARD}
-            {Nicht Angemeldeter Benutzer}
+            {Nicht angemeldeter Benutzer}
             {Macht die Applikation das erste mal auf}
             {
             Er gibt seinen gewünschten Namen ein. \newline
@@ -268,7 +270,7 @@ literate={*}{{\char42}}1
 
         \requirementTable
             {USER\_LOGIN\_GOOGLE}
-            {Nicht Angemeldeter Benutzer}
+            {Nicht angemeldeter Benutzer}
             {Macht die Applikation das erste mal auf}
             {
             Er klickt auf die Option “mit Google anmelden” \newline
