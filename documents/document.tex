@@ -69,11 +69,11 @@ literate={*}{{\char42}}1
     \begin{table}[H]
       \begin{tabularx}{\textwidth}{|l|X|}
         \hline
-        Bezeichnung & \makecell[l]{#1}  \\ \hline
-        Akteur (= Auslöser) & \makecell[l]{#2}  \\ \hline
-        Voraussetzung & \makecell[l]{#3}  \\ \hline
-        Funktionsablauf & \makecell[l]{#4}  \\ \hline
-        Endzustand & \makecell[l]{#5}  \\ \hline
+        Bezeichnung & #1  \\ \hline
+        Akteur (= Auslöser) & #2  \\ \hline
+        Voraussetzung & #3  \\ \hline
+        Funktionsablauf & #4  \\ \hline
+        Endzustand & #5  \\ \hline
       \end{tabularx}
     \end{table}
 }
@@ -145,18 +145,11 @@ literate={*}{{\char42}}1
   \end{center}
 
   \section{Zweck des Dokuments}
-    In diesem Dokument werden wir die Anforderungen an unser Projekt “Globalizer”.
-    Das Projekt gilt im aktuellen Zustand als angenommen,
-    da der Projektantrag durch Herr Manfred Rötheli angenommen wurde. Wir werden be\-schreiben,
-    welche Anforderungen wir erfüllen möchten (“soll”-Anforderungen) und welche optionalen
-    “kann”-Anforderungen wir eventuell auch erfüllen können.
-    Es soll eine Übersicht für unser Vorhaben sein. Weiter sollen unsere Prozesse
-    so gut wie möglich durch Grafiken dargestellt und visualisiert werden.
+    In diesem Dokument werden wir die Anforderungen an unser Projekt “Globalizer” formulieren. Das Projekt gilt im aktuellen Zustand als angenommen, da der Projektantrag durch Herr Manfred Rötheli angenommen wurde. Wir werden beschreiben, welche Anforderungen wir erfüllen möchten (“soll”-Anforderungen) und welche optionalen “kann”-Anforderungen wir eventuell auch erfüllen können. Es soll eine Übersicht für unser Vorhaben sein. Weiter sollen unsere Prozesse so gut wie möglich durch Grafiken dargestellt und visualisiert werden. \\
     Bei Fragen wenden sie sich an den Projektleiter (jonas.koller@gmx.ch).
 
   \section{Allgemeine Informationen}
-    Hier folgt eine kurze Auflistung der Informationen zu diesem Dokument,
-    dem Entwicklungsteam und dem aktuellen Stand.
+    Hier folgt eine kurze Auflistung der Informationen zu diesem Dokument, dem Entwicklungsteam und dem aktuellen Stand.
 
   \subsection{Projektmitarbeiter}
     \begin{table}[h]
@@ -197,53 +190,46 @@ literate={*}{{\char42}}1
 
   \section{Gesamtüberblick}
     \subsection{Allgemeine Beschreibung}
-      Der Auftraggeber will für die Schule BBZW Sursee eine Chat Applikation entwickeln lassen.
-      Für die Kommunikation zwischen den Schülern wie auch zum Lehrer. Es ist ihm wichtig dass
-      die Anwender der Applikation komplett Anonym bleiben können. Die Applikation soll
-      Modern und schnell als Webseite daher kommen und sowohl im Browser als auch
-      auf mobilen Geräten funktionieren.
+        Der Auftraggeber gehört zum Berufsbildungszentrum Wirtschaft, Informatik und Technik (BBZW) des Kanton Luzern, das Kompetenzzentrum für kaufmännische und gewerbliche Berufe an den drei Schulstandorten Sursee, Willisau und Emmen. Am Standort Sursee werden die zukünftigen Informatiker EFZ ausgebildet. \\
+        Der eigentliche Auftraggeber ist  die Schule BBZW Sursee. Sie will eine Chat Applikation entwickeln lassen für die Kommunikation unter den Schülern wie auch zum Lehrer. Es ist ihm wichtig, dass die Anwender der Applikation komplett anonym bleiben können. Die Applikation soll modern und schnell als Webseite daher kommen und sowohl im Browser als auch auf mobilen Geräten funktionieren. \\
+        Das Resultat soll auch ausserhalb der Organisation gezeigt werden können, damit die Kompetenz des BBZW Sursee auch dort sichtbar wird.
+        Der Auftraggeber möchte auch den Open-source-Ansatz fördern. Darum soll das Projekt unter open-source durchgeführt werden und der Auftraggeber übernimmt die Verantwortung für Koordination und die Projektleitung, alle anderen Arbeiten müssen durch motivierte Freiwillige geleistet werden. \\
+        Finanziell kann sich der Auftraggeber und der Kanton Luzern als Inhaber nichts leisten. Darum muss das Projekt mit einem minimalen Budget auskommen.
 
     \subsection{Ziele}
-      Die Chat Applikation soll folgende Eigenschaften haben.
+      Die Chat Applikation soll die folgende Eigenschaften haben.
 
       \begin{enumerate}
-        \item Anonymität der Anwender: Die Benutzer können sich Anonym auf der Applikation aufhalten.
-          Da keinerlei Informationen vom Benutzer gespeichert werden sind auch automatisch
-          die Anforderungen an den Datenschutz erfüllt.
-        \item Modernes Design: Das Ziel besteht aus jungen Menschen die Gewohnt sind mit
-          Informatik Instrumenten Arbeiten. Das erhöht die Akzeptanz der Anwendung.
-        \item Kostengünstiger Betrieb: Der Auftraggeber verfügt nur über ein minimales Budget
-          sodass die Applikation mit geringen Unterhalt und Hosting kosten auskommen muss.
-        \item Hohe Verfügbarkeit: Die Applikation sollte eine Verfügbarkeit von 99\% haben,
-          ohne dass ein Administration betrieben werden muss.
-        \item Geschwindigkeit: Eine Chat Applikation beruht auf einem ständigen fragen und antworten. \newline
-          Daher muss die Applikation sehr schnell sein.
+        \item Modernes Design: Das Ziel besteht aus jungen Menschen, die gewohnt sind, mit Informatik Instrumenten arbeiten. Das erhöht die Akzeptanz der Anwendung. Da die Anwendung auch ausserhalb des BBZW gezeigt werden soll, ist das sehr wichtig für das Bild, welches die anderen vom BBZW bekommen.
+        \item Anonymität der Anwender:  Im Moment sind grosse Diskussionen über die Datenschutz-Grundverordnung (DSGVO) im Gange. Damit der Auftraggeber hier keine Probleme bekommt, sollen sich die Benutzer völlig anonym in der Applikation aufhalten können. Es werden bewusst keinerlei Daten für die Identifizierung oder Rückverfolgbarkeit gespeichert. \\
+            Beim ersten Anmelden sollte er aber mit einer Info darauf hingewiesen werden, dass die Benutzung der Applikation auf eigene Gefahr hin geschieht.
+        \item Es wird als Open-Source entwickelt. Die Entwicklung geschieht durch die Schüler des BBZW als Open-Source. Damit soll auch gezeigt werden, dass es möglich ist, mit geringen finanziellen Mitteln ein gutes Produkt herzustellen und es allen zum Gebrauch anzubieten. Nur die Koordination und die Projektleitung wird durch das BBZW übernommen.
+        \item Kostengünstiger Betrieb: Der Auftraggeber verfügt nur über ein minimales Budget, sodass die Applikation mit geringen Unterhalts- und Hosting-Kosten auskommen muss.
+        \item Hohe Verfügbarkeit: Die Applikation sollte eine Verfügbarkeit von 99\% haben, ohne dass der Betrieb ständig überwacht werden muss. \\
+            Falls die Applikation einmal nicht verfügbar ist, dann könnte dies mit einem Mail oder Whatsapp an einer Gruppe gemeldet werden. Diese Funktion ist aber nicht zwingend notwendig und könnte auch erst in einem späteren Release umgesetzt werden.
+        \item Geschwindigkeit: Heute Benutzer sind es sich gewohnt, dass die Applikationen sofort reagieren, wenn sie etwas eingeben, sie warten nicht mehr lange auf Antworten. Besonders in einer Chat-Applikation muss die Geschwindigkeit sehr hoch sein. Das sollte mit modernen Technologien machbar sein.
       \end{enumerate}
 
-    \subsection{Spezielle Aspekte}
-      Weil die Applikation auf Anonymität beruht werden wir weder Ip Adressen noch Persönliche daten speichern,
-      haben wir auch keine Sensible Nutzerdaten die wir noch speziell schützen müssten.
-
   \section{Analyse des IST-Systems}
-    Es ist bis jetzt noch kein System vorhanden. Wir können alles von vorne Entscheiden.
+    Im Moment wird die Kommunikation zwischen den Schülern und den Lehrern über diverse Kanäle geführt: Mail, Telefon, Whatsapp und weitere. Die neue Applikation kann diese Kanäle nicht ersetzen, sondern im Bereich des Chats die Austausch von Informationen auf anonymer Basis ermöglichen.
 
   \section{Zielkatalog}
     In diesem Kapitel werden die Voraussetzungen an unser System genannt.
 
     \subsection{Beschreibung des SOLL-Systems}
       \subsubsection{Aktivitätsdiagramm}
-        Bild wird noch übernommen
+        \includegraphics[width=\textwidth]{activity-diagram.png}
       \subsubsection{Externes Use Case Diagramm}
-        Bild wird noch übernommen
+        \includegraphics[width=\textwidth]{extern-usecase.png}
       \subsubsection{Internes Use Case Diagramm}
-        Bild wird noch übernommen
+        \includegraphics[width=\textwidth]{intern-usecase.png}
 
     \subsection{Zielsetzungen}
       \subsubsection{Muss-Ziele}
         \begin{enumerate}
           \item \faGlobe~ Globalen Gruppen Chat
           \item \faUser~ Hinterlegen eines Benutzernamens
-          \item \faKey~ Session Anmeldung über UserKey
+          \item \faKey~ Sessionanmeldung über UserKey
           \item \faMobile~ PWA
         \end{enumerate}
 
@@ -254,11 +240,101 @@ literate={*}{{\char42}}1
         \end{enumerate}
 
     \subsection{Akteure}
+        \begin{table}[H]
+          \begin{tabularx}{\textwidth}{|l|X|}
+            \hline
+            Nicht Angemeldeter Benutzer & Hat nur die Berechtigung, sich anzumelden  \\ \hline
+            Angemeldeter Benutzer & Kann Nachrichten verschicken und erhalten  \\ \hline
+            Administrator & Hat Zugriff auf Verwaltungsinformationen und auf die Datenbank \\ \hline
+          \end{tabularx}
+        \end{table}
+
 
     \subsection{Funktionale Anforderungen}
       \subsubsection{Anforderungen aus der Sicht des unprivilegierten Benutzers}
-        \requirementTable{asdf}{asdf}{asdf}{asdf}{asdf}
-      \subsubsection{Anforderungen aus der Sicht der privilegierten Benutzer}
-      \subsubsection{Anforderungen aus der Sicht des Systems}
+        \requirementTable
+            {USER\_LOGIN\_STANDARD}
+            {Nicht Angemeldeter Benutzer}
+            {Macht die Applikation das erste mal auf}
+            {Er gibt seinen gewünschten Namen ein. Es wird geprüft, ob es jemanden mit dem Namen schon gibt. Dann erscheint ein Popup mit den Nutzungsbedingungen. Der Benutzer kann nun Annehmen oder Abbrechen auswählen}
+            {Falls der Benutzer die Nutzungsbedingungen akzeptiert, ist er auf der Chatseite und ist auf dem Server authentifiziert. Falls der Benutzer die Nutzungsbedingungen abgelehnt hat, ist er wieder im Ausgangsbildschirm.}
+            
+        \requirementTable
+            {USER\_LOGIN\_GOOGLE}
+            {Nicht Angemeldeter Benutzer}
+            {Macht die Applikation das erste mal auf}
+            {Er klickt auf die Option “mit Google anmelden” Die Authentifizierung über Google erfolgt. Falls die Anmeldung gültig ist, dann erscheint ein Popup mit den Nutzungsbedingungen. Der Benutzer kann nun Annehmen oder Abbrechen auswählen. Falls keine gültige Anmeldung über Google erfolgt, wird der Anmeldeprozess wieder auf den Start gestellt.}
+            {Falls der Benutzer sich mit Google korrekt authentifiziert hat und  die Nutzungsbedingungen akzeptiert, ist er auf der Chatseite und ist auf dem Server authentifiziert. Falls der Benutzer sich nicht via Google anmelden konnte oder er die Nutzungsbedingungen abgelehnt hat, ist er wieder im Ausgangsbildschirm.}
+            
+        \requirementTable
+            {NACHRICHT\_SENDEN}
+            {Angemeldeter Benutzer}
+            {Ist bereits angemeldet und auf der Chatseite}
+            {Gibt eine Nachricht ein und sendet diese ab}
+            {Die Nachricht kommt beim Server an und wird and die verschiedenen Benutzer gesendet und angezeigt.}
+            
+        \requirementTable
+            {NACHRICHT\_EMPFAGEN}
+            {Angemeldeter Benutzer}
+            {Ist bereits angemeldet und auf der Chatseite}
+            {Bekommt eine Nachricht vom Server}
+            {Die Nachricht wird auf der Applikation angezeigt}
+            
+                   
+        \requirementTable
+            {PRIVATER\_CHAT\_ANFRAGE}
+            {Angemeldeter Benutzer}
+            {Benutzer ist bereits angemeldet und auf der Chatseite Es ist ein zweiter Benutzer ebenfalls im Chat angemeldet}
+            {Der Benutzer 1 macht einen Rechtsklick auf den zweiten Benutzer. Es erscheint ein Dialog, ob er einen Privatchat starten will. Falls er das bestätigt, erscheint beim zweiten Benutzer eine Meldung, dass Benutzer 1 ihn zu einem Privatchat eingeladen hat.}
+            {Meldung an zweiten Benutzer verschickt mit der Anfrage für einen Privatchat.}
+            
+                   
+        \requirementTable
+            {PRIVATER\_CHAT\_ERSTELLEN\_PERSON\_NIMMT\_\newline ANNEHMEN }
+            {Angemeldeter Benutzer}
+            {Ist bereits angemeldet und auf der Chatseite Hat von einem anderen Benutzer eine Anfrage für einen Privatchat erhalten.}
+            {Der Benutzer macht einen Rechtsklick auf die Meldung Im Dialog klickt er auf “Zum Privaten Chat wechseln”. Der anfragende Benutzer erhält eine Meldung, dass der Benutzer zu seinem Privatchat gewechselt hat}
+            {Der Benutzer und der anfragende Benutzer sind in einem Privatchat}
+            
+                   
+        \requirementTable
+            {PRIVATER\_CHAT\_ERSTELLEN\_PERSON\_LEHNT\_\newline ABLEHNEN}
+            {Angemeldeter Benutzer}
+            {Ist bereits angemeldet und auf der Chatseite Hat von einem anderen Benutzer eine Anfrage für einen Privatchat erhalten}
+            {Der Benutzer macht einen Rechtsklick auf die Meldung Im Dialog klickt er auf “Nicht zum Privaten Chat wechseln” oder er ignoriert die Anfrage}
+            {Der Benutzer bleibt im normalen Chat Beim anfragenden Benutzer erscheint die Meldung, dass kein Privatchat zustande gekommen ist.}
+            
 
+      \subsubsection{Anforderungen aus der Sicht der privilegierten Benutzer}
+        \requirementTable
+            {BENUTZER\_AUS\_CHAT\_ENTFERNEN}
+            {Admin}
+            {ist als Administrator angemeldet. EIn momentan angemeldeter Benutzer verstösst im laufenden Chat gegen die Vorgaben des Chats.}
+            {Falls ein Benutzer sich nicht an die Vorgaben hält, kann er aus dem Chat durch einen Administrator entfernt werden, indem sein Token gelöscht wird. Im Chat erfolgt eine generierte Nachricht, “Benutzer xxx aus Chat entfernt”}
+            {Der Benutzer ist nicht mehr im Chat angemeldet}
+            
+                           
+        \requirementTable
+            {CHAT\_HISTORIE\_AUS\_CHAT\_ENTFERNEN}
+            {Admin}
+            {ist als Administrator angemeldet. Ein  Benutzer hat gegen die Vorgaben des Chats verstossen und seine Einträge müssen entfernt werden. Es ist egal, ob der Benutzer angemeldet ist oder nicht.}
+            {Der Administrator kann jederzeit, auch wenn der Benutzer nicht mehr angemeldet ist, die ganze Historie der Chats dieses Benutzer löschen.}
+            {Der Benutzer ist nicht mehr im Chat angemeldet}
+            
+      \subsubsection{Anforderungen aus der Sicht des Systems}
+         \requirementTable
+            {UPDATEN}
+            {System}
+            {Ist nicht zum ersten mal auf der Applikation}
+            {Schaut ob eine neue Version verfügbar ist und aktualisiert zur neuesten Version.}
+            {Ist auf der neusten Version der Applikation.}
+            
+    \section{Mockups}
+        \subsection{Android frame}
+        \includegraphics[width=\textwidth]{mock-chat.png}
+        \subsection{Desktop Chrome Login}
+        \includegraphics[width=\textwidth]{frame-desktop-login.png}
+        
+        \subsection{Desktop Chrome Chat}
+        \includegraphics[width=\textwidth]{frame-desktop-chat.png}
 \end{document}
