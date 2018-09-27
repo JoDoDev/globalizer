@@ -37,7 +37,7 @@
 \usepackage{fontawesome}
 
 % set dimmensions of page
-\usepackage[footskip=80pt]{geometry}
+\usepackage[footskip=80pt, headheight=15pt]{geometry}
 
 % tables
 \usepackage{tabularx}
@@ -65,6 +65,18 @@ literate={*}{{\char42}}1
         \usebox{\picbox}};
     }] {};}
 
+\newcommand{\requirementTable}[5]{
+    \begin{table}[H]
+      \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        Bezeichnung & \makecell[l]{#1}  \\ \hline
+        Akteur (= Auslöser) & \makecell[l]{#2}  \\ \hline
+        Voraussetzung & \makecell[l]{#3}  \\ \hline
+        Funktionsablauf & \makecell[l]{#4}  \\ \hline
+        Endzustand & \makecell[l]{#5}  \\ \hline
+      \end{tabularx}
+    \end{table}
+}
 
 \title{
   \Huge
@@ -245,6 +257,7 @@ literate={*}{{\char42}}1
 
     \subsection{Funktionale Anforderungen}
       \subsubsection{Anforderungen aus der Sicht des unprivilegierten Benutzers}
+        \requirementTable{asdf}{asdf}{asdf}{asdf}{asdf}
       \subsubsection{Anforderungen aus der Sicht der privilegierten Benutzer}
       \subsubsection{Anforderungen aus der Sicht des Systems}
 
