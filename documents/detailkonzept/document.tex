@@ -74,13 +74,95 @@
 	\includegraphics[width=\linewidth]{system-components.png}
 
 	\section{Design-Pattern}
-	Da werder unser Backend, noch unser Frontend objektoriertiert ist, können keine Klassendiagramme erstellt werden. OOP-Eigenschaften wie Vererbungen und beziehungen werden bei diesem Projekt auch kaum benutzt. Aus diesem Grund verzichten wir auf diese Diagramme. Wir verwenden anstelle dessen aber ein UML-Aktivitätsdiagramm, um unsere Abläufe zu visualisieren.
+	Da werder unser Backend, noch unser Frontend objektoriertiert ist, können keine Klassendiagramme erstellt werden. OOP-Eigenschaften wie Vererbungen und beziehungen werden bei diesem Projekt auch kaum benutzt. Aus diesem Grund verzichten wir auf diese Diagramme. Wir verwenden anstelle dessen aber ein UML-Aktivitätsdiagramm, um unsere Abläufe zu visualisieren. Wir venwenden in diesem Projekt keine Domain-Driven-Design, Test-Driven-Design oder ähnliches, da unser Projekt zu klein ist, damit dies den Aufwand wert wäre.
+
+	\subsection{Allgemeine Architektur-Pattern}
+	Wir wollen die Kommunikation zwischen Frontend und Backend möglich dynamisch und asynchron halten, damit weder das Front- noch das Backend lange Wartenzeiten aufweist oder "einfriert". Da die Kommunikation selbst aufgrund der Technologien nur schwer ganz asynchron umsetzbar ist, verwenden wir das in Angular häufig angewanndte "pseudo Asynchronität". Die Anfragen an sich verlaufen synchron. Angular lässt aber zu, dass das Frontend wärenddessen nicht blockiert wird und arbeitet bis zur Antwort den restlichen Befehlsstack ab und hört auf Events. Im Backend läuft das auch so. Somit blockieren werder das Back- noch das Frontend und der Nutzer hat ein vielfach besseres Erlebnis beim verwenden der Applikation. Sowohl verwenden auch an beiden Orten das "Observer"-Pattern. Dies wird durch Angular und NodeJS unterstützt, in dem wir die "rxjs"-Library verwenden. Durch die einbindung dieser vereinfacht sich das Behandeln von Events und das reaktive Programmieren.
+
+	\subsection{Codestyle und Codequalität}
+	Damit unser Projekt auch über lange Zeit verwendbar, Wartbar und Erweiterbar ist, werden wir einige Programmierprinzipien anwenden, welche sicherstellen, dass unser Code langzeitig sauber bleibt. Dies sind folgende:
+	\begin{itemize}
+		\item \faCode~ Cleancode-Prinzip
+		\item \faInstitution~ SOLID-Prinzip
+		\item \faUsers~ Pair-Programming-Prinzip
+		\item \faGit~ Feature-Branches und Pull-Requests
+	\end{itemize}
+	Falls einer der Begriffe unbekannt sein sollte, kann eine Erklärung zu diesem im Internet gefunden werden.\newline
+	Wir verwenden Github als Versionskontrolle (mehr dazu bei den Technologieentscheiden). Damit wir die oben genannten Prinzipien einhalten, setzen wir \href{https://www.codefactor.io}{Codefactory} ein. Zudem verwenden wir auch \href{https://palantir.github.io/tslint/}{TSLint}, eine Clientseitige Library zur Überprüfung vom Codestyle.\newline
+	Desweitern verwenden wir einen Continuous Build System und ein Continuous Testing System, welches aktiviert wird bei einem "Push" ins Github Repository. Dazu auch später mehr.
 
 	\subsection{Architektur Backend}
 	Das Backend wird in NodeJS erstellt. Es nutzt Websockets zur Kommunikation mit dem Frontend. Das Websocket-Protokoll ist auf TCP basiert und erlaubt bidirektionale Verbindungen zwischen Server und Client. Das Backend ist offen für neue Verbindungen. Wenn sich ein neuer Benutzer anmeldet, registriert dieser sich beim Backend. Dieses hört danach auf Anfragen des Frontends. Im gegenzug sendet das Backend neue Nachrichten selbst an das Frontend. Durch dieses "Bidirectional Message Pattern" können wir einiges an Bandbreite einsparen, da wir nicht immer wieder Fetch-Anfragen senden müssen um den Client auf dem aktuellen Stand zu behalten. Wir konnten somit das "Fetch"-Antipattern umgehen, da dieses für eine Chat-Applikation ungeeignet ist. In der folgenden Grafik kann ausgelesen werden, wie die der Ablauf bei Anfragen an den Server aussehen.
 
-	\section{Analyse des IST-Systems}
-	Im Moment wird die Kommunikation zwischen den Schülern und den Lehrern über diverse Kanäle geführt: Mail, Telefon, Whatsapp und weitere. Die neue Applikation kann diese Kanäle nicht ersetzen, sondern im Bereich des Chats die Austausch von Informationen auf anonymer Basis ermöglichen.
+	//TODO: Bild Backend aufrufe
+
+	\subsection{Architektur Frontend}
+	Unser Frontend wird mit Angular (Version 7) implementiert. Wieso genau wir uns für diese Technologie entschieden haben wird später erläutert. Dazu wird das Google Angular Material verwendet, damit wir dank dieser Library nicht alle UI-Komponenten selbst erstellen und designen müssen, sondern auf diese UI-Library zurückgreifen können (diese Library ist ähnlich wie Twitters Bootstrap). Das Frontend sendet auch via Websocket-Protokoll Nachrichten an das Backend.
+
+	\section{Persistenz}
+	Unsere Applikation verwendet wie bereits oben beschrieben eine InMemory Datenbank. Diese wird eine NoSQL Datenbank sein (NoSQL im Sinne von kein SQL verwendend und nicht darauf basierend). Sie basiert auf einem JSON-Datenmodel. Dies da wir in JavaScript programmieren werden und die Daten verwenden können, ohne diese zuerst parsen zu müssen. Die InMemory-DB wird durch Vanilla-JavaScript ermöglicht und braucht keine weiter Library. Ein konkretes Datenmodel gibt es nicht aufgrund von dem Fakt, dass wir dynamisch Daten speichen und entfernen und das genaue Datenmodel so entsteht.
+
+	\section{Detailierte Komponenten und Schnittstellen}
+	Folgend werden alle Komponenten genau beschrieben und deren Schnittstellen definiert.
+
+	\subsection{Backend}
+	Die Backendkomponente bildet das "Hirn" unserer Applikation. Hier werden sowohl alle wichtigen Daten gespeichert (in der InMemory-DB), als auch alle wichtigen Impulse verwendet (Websockets). Ziel des Backends ist es eine möglichst hohe flexibilität und Wartbarkeit mit einer möglichst hohen Performance zu kombinieren. Dies wird durch die sehr junge Backend-Sprache NodeJS ermöglicht.
+
+	\subsection{Funktionale Anforderungen}
+	Das Backend ist betroffen von 3 obligatorischen funktionalen Anforderungen. Diese sind:
+	\begin{itemize}
+		\item \faLock~ USER\_STANDARD\_LOGIN
+		\item \faSend~ NACHRICHT\_SENDEN
+		\item \faEnvelope~ NACHRICHT\_EMPFANGEN
+	\end{itemize}
+	Was diese Anforderungen konkret bedeuten kann im Dokument "Anfoderungsspezifikationen" nachgelesen werden. Dort sind diese inklusiv Use-Case-Diagramm dargestellt.
+
+	\subsection{Schnittstellen}
+	//TODO: Schnittstellen beschreiben
+
+	\subsection{Presistenz}
+	Das Backend übernimmt den Hauptteil der Persistenz der ganzen Applikation. Hier werden alle Nachrichten und Benutzer in die InMemory-DB gespeichert und der Zustand der ganzen Applikation.
+	Die Entitäten sehen wie gefolgt aus:
+	//TODO: Bilder Entitäten
+
+	\subsection{Frontend}
+	Die Frontendkomponente bildet die Schnittstelle zwischen Endbenutzer und System. Hier werden die Daten aus dem Backend grafisch dargestellt. Wichtig an dieser Komponente ist, dass das Aussehen dieser modern und stylisch ist, damit der Nutzer ein tolles Erlebnis auf der Seite hat. Auch Geschwindigkeit ist hier ein wichtiges Thema, weshalb Angular 7 eine sehr gut passende Technologie ist. Die Funktionsweise des Frontends kann aus diesen UML-Diagramm ausgelesen werden.
+
+	//TODO: UML Flussdiagramm Frontend
+
+	\subsection{Funktionale Anforderungen}
+	Das Frontend ist betroffen von 3 obligatorischen funktionalen Anforderungen. Diese sind:
+	\begin{itemize}
+		\item \faLock~ USER\_STANDARD\_LOGIN
+		\item \faSend~ NACHRICHT\_SENDEN
+		\item \faEnvelope~ NACHRICHT\_EMPFANGEN
+	\end{itemize}
+	Was diese Anforderungen konkret bedeuten kann im Dokument "Anfoderungsspezifikationen" nachgelesen werden. Dort sind diese inklusiv Use-Case-Diagramm dargestellt.
+
+	\subsection{Schnittstellen}
+	Die Schnittstelle zwischen Benutzer und Frontend ist rein visuell. Diese soll später so aussehen:
+
+	\subsubsection{Android frame}
+	\includegraphics[width=\textwidth]{mock-chat.png}
+	\subsubsection{Desktop Chrome Login}
+	\includegraphics[width=\textwidth]{frame-desktop-login.png}
+	\subsubsection{Desktop Chrome Chat}
+	\includegraphics[width=\textwidth]{frame-desktop-chat.png}
+
+	\subsection{Presistenz}
+	Das Frontend hat nur einen ganz minimalen Teil an Persistenz. Dazu wird der durch HTML 5 neu eingeführte LocalStorage eingesetzt. Es wird nach dem Login eines Benutzers dessen ID gesichert, damit später ein Sessionlogin durchgeführt werden kann und der Nutzer sich nicht erneut anmelden muss. Da diese Daten aber auf dem Client selbst gespeichert sind, müssen sie mit vorsicht behandelt werden.
+
+	\section{}
+
+#Technologieentscheide
+	//TODO: Wieso Github
+	//TODO: Wieso Angular 7
+	//TODO: Wieso CI? Und Testing beschreiben //TODO: Testting pipeline bild
+	//TODO: Hosting bei Heroku
+
+#Deployment
+	//TODO: Deploymentdiagramm bild einfügen
+
 
 	\subsection{Zielsetzungen}
 	\subsubsection{Muss-Ziele}
