@@ -12,7 +12,8 @@
     "cypress:run": "CYPRESS_baseUrl='http://localhost:4200' CYPRESS_BACKEND_API='http://localhost:8080' cypress run",
     "postinstall": "npm run build:prod",
     "build:circleci": "ng build --prod --configuration='e2e' --progress=false",
-    "cypress:circleci": "CYPRESS_baseUrl='http://localhost:4200' CYPRESS_BACKEND_API='http://localhost:4200' cypress run --record"
+    "cypress:circleci": "CYPRESS_baseUrl='http://localhost:4200' CYPRESS_BACKEND_API='http://localhost:4200' cypress run --record",
+    "server:circleci": "PORT=4200 npm run start"
   },
   "main": "server/index.js",
   "private": true,
