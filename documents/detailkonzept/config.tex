@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% clickable links in pdf
+\usepackage{hyperref}
+
+% make title variable available
+\usepackage{titling}
+
+% create own header footer
+\usepackage{fancyhdr}
+
+% images
+\usepackage{graphicx}
+
+% grafics powerfull and hard
+\usepackage{tikz}
+
+% character spacing to fill line
+\usepackage{microtype}
+
+% image placement with [H]
+\usepackage{float}
+
+% fancy quotes
+\usepackage{epigraph}
+
+% extra symbols
+\usepackage{textcomp}
+
+% display code
+\usepackage{listings}
+
+% icons
+\usepackage{fontawesome}
+
+% set dimmensions of page
+\usepackage[footskip=80pt, headheight=15pt]{geometry}
+
+% tables
+\usepackage{tabularx}
+\usepackage{makecell}
+
+% make code copyable
+\lstset{
+	upquote=true,
+	columns=fullflexible,
+	literate={*}{{\char42}}1
+	{-}{{\char45}}1
+}
+
+\newsavebox{\picbox}
+
+\graphicspath{ {./images/} }
+
+% command for rounded corners
+\newcommand{\cutpic}[3]{
+	\savebox{\picbox}{\includegraphics[width=#2]{#3}}
+	\tikz\node [draw, rounded corners=#1, line width=4pt,
+	color=white, minimum width=\wd\picbox,
+	minimum height=\ht\picbox, path picture={
+		\node at (path picture bounding box.center) {
+			\usebox{\picbox}};
+	}] {};}
