@@ -171,20 +171,25 @@
 	\subsection{LaTex}
 	Der letzte erwähnenswerte Technologieentscheid ist der des Dokumentationstools. Wir verwenden LaTex, welches geeignet ist um technische und wissenschaftliche Dokumente zu erstellen. Bis jetzt hat noch niemand von uns mit LaTex gearbeitet. Wir haben uns aber für dieses entschieden nach einer intensiven Internetrecherche und einem ersten Testlauf, welchen wir durchgeführt haben.
 
-	\section{Continuous Integration und Testing}
+	\section{Continuous Integration und Continuous Testing}
 	Wir werden bei unserem Projekt eine Continuous Integration und ein Continuous Deployment eingerichten. Es wird zudem auch ein Continuous Testing geben.
 
 	\subsection{CI mit CircleCI}
 	CircleCI ist ein Buildserver, welcher für Continuous Integration genutzt wird. Man kann CircleCI mit Github verbinden und bei jedem Push einen Build "triggern". Somit sieht man direkt, wenn nach einem Push das Projekt nicht mehr gebaut werden kann und Fehler werden sehr frühzeitig erkannt. Dies ermöglicht es uns, dass der Stand welcher auf Github ist immer lauffähig und funktionell ist. CircleCI kann für Open Source Projekte kostenlos genutzt werden. Zu finden unter \href{https://circleci.com/}{https://circleci.com/}.
 
 	\subsection{CT mit Cypress}
-	Cypress ist ein weiteres Tool, welches mit Github verbunden werden kann. Es hat zudem auch eine Anbindung an CircleCI. Wir werden Cypress so konfigurieren, dass bei einem Push ein CircleCI-Build "getriggered" wird und das Kompilat aus diesem danach an Cypress übergeben wird. Cypress soll dieses danach laufen lassen und automatisch E2E (End-to-End) Tests laufen lassen, welche uns ein weiteres Werkzeug zur Überprüfung der Integrität unserer Software geben. Cypress ist zu finden unter \href{https://www.cypress.io/}{https://www.cypress.io/}.
+	Cypress ist ein weiteres Tool, welches mit Github verbunden werden kann. Es hat zudem auch eine Anbindung an CircleCI. Wir werden Cypress so konfigurieren, dass bei einem Push ein CircleCI-Build "getriggered" wird und Cypress sich danach in diesen Build einhängt. Cypress soll danach automatisch alle E2E (End-to-End) Tests laufen lassen. Von den E2E Tests wird ein Video aufgezeichnet, welches dann auf Cypress einsehbar ist. So können wir anhand von den Videos auch Fehler finden, welche in den E2E Tests vorkommen. Cypress ist also ein Tool, welches uns ein weiteres Werkzeug zur Überprüfung der Integrität unserer Software geben wird. Cypress ist zu finden unter \href{https://www.cypress.io/}{https://www.cypress.io/}.
+
+	\subsection{Code Review mit CodeFactor}
+	CodeFactor ist ein Tool, welches ebenfalls mit Github verbunden wird. Bei einem Push überprüft es automatisch, ob im Code Sicherheitslücken, Codestyle-Fehler oder sonstige Fehlerquellen sind. Das ganze kann dann übersichtlich auf einer Weboberfläche von CodeFactor angeschautn werden. Dieses Tool wird uns helfen den Code sauber zu behalten, damit dieser gut wartbar wird. CodeFactor ist zu finden unter \href{https://www.codefactor.io/}{https://www.codefactor.io/}.
+
+	\subsection{Darstellung CI \& CT}
+	Der Ablauf von unserem CI \& CT sieht wie gefolgt aus.\newline
+	\noindent
+	\includegraphics[width=\textwidth]{deploy-hocks-testing.png}
 
 #Technologieentscheide
-	//TODO: Wieso CI? Und Testing beschreiben //TODO: Testting pipeline bild
 	//TODO: Hosting bei Heroku
-
-#testing pipeline
 
 #Deployment
 	//TODO: Deploymentdiagramm bild einfügen
