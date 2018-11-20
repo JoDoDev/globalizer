@@ -93,8 +93,8 @@
 
 	\subsection{Architektur Backend}
 	Das Backend wird in NodeJS erstellt. Es nutzt Websockets zur Kommunikation mit dem Frontend. Das Websocket-Protokoll ist auf TCP basiert und erlaubt bidirektionale Verbindungen zwischen Server und Client. Das Backend ist offen für neue Verbindungen. Wenn sich ein neuer Benutzer anmeldet, registriert dieser sich beim Backend. Dieses hört danach auf Anfragen des Frontends. Im gegenzug sendet das Backend neue Nachrichten selbst an das Frontend. Durch dieses "Bidirectional Message Pattern" können wir einiges an Bandbreite einsparen, da wir nicht immer wieder Fetch-Anfragen senden müssen um den Client auf dem aktuellen Stand zu behalten. Wir konnten somit das "Fetch"-Antipattern umgehen, da dieses für eine Chat-Applikation ungeeignet ist. In der folgenden Grafik kann ausgelesen werden, wie die der Ablauf bei Anfragen an den Server aussehen.
-
-	//TODO: Bild Backend aufrufe
+	\subsubsection{UML Flussdiagramm}
+	\includegraphics[width=0.9\linewidth]{flow-diagramm-server.jpg}
 
 	\subsection{Architektur Frontend}
 	Unser Frontend wird mit Angular (Version 7) implementiert. Wieso genau wir uns für diese Technologie entschieden haben wird später erläutert. Dazu wird das Google Angular Material verwendet, damit wir dank dieser Library nicht alle UI-Komponenten selbst erstellen und designen müssen, sondern auf diese UI-Library zurückgreifen können (diese Library ist ähnlich wie Twitters Bootstrap). Das Frontend sendet auch via Websocket-Protokoll Nachrichten an das Backend.
@@ -122,13 +122,14 @@
 
 	\subsection{Presistenz}
 	Das Backend übernimmt den Hauptteil der Persistenz der ganzen Applikation. Hier werden alle Nachrichten und Benutzer in die InMemory-DB gespeichert und der Zustand der ganzen Applikation.
-	Die Entitäten sehen wie gefolgt aus:
-	//TODO: Bilder Entitäten
+	Die Entitäten sehen wie gefolgt aus:\newline
+	\noindent
+	\includegraphics[width=\linewidth]{backend-entity.png}
 
 	\subsection{Frontend}
 	Die Frontendkomponente bildet die Schnittstelle zwischen Endbenutzer und System. Hier werden die Daten aus dem Backend grafisch dargestellt. Wichtig an dieser Komponente ist, dass das Aussehen dieser modern und stylisch ist, damit der Nutzer ein tolles Erlebnis auf der Seite hat. Auch Geschwindigkeit ist hier ein wichtiges Thema, weshalb Angular 7 eine sehr gut passende Technologie ist. Die Funktionsweise des Frontends kann aus diesen UML-Diagramm ausgelesen werden.
-
-	//TODO: UML Flussdiagramm Frontend
+	\subsubsection{UML Flussdiagramm}
+	//TODO: UML Flussdiagramm Frontend (client-flow-diagram.png)
 
 	\subsection{Funktionale Anforderungen}
 	Das Frontend ist betroffen von 3 obligatorischen funktionalen Anforderungen. Diese sind:
@@ -150,15 +151,25 @@
 	\includegraphics[width=\textwidth]{frame-desktop-chat.png}
 
 	\subsection{Presistenz}
-	Das Frontend hat nur einen ganz minimalen Teil an Persistenz. Dazu wird der durch HTML 5 neu eingeführte LocalStorage eingesetzt. Es wird nach dem Login eines Benutzers dessen ID gesichert, damit später ein Sessionlogin durchgeführt werden kann und der Nutzer sich nicht erneut anmelden muss. Da diese Daten aber auf dem Client selbst gespeichert sind, müssen sie mit vorsicht behandelt werden.
+	Das Frontend hat nur einen ganz minimalen Teil an Persistenz. Dazu wird der durch HTML 5 neu eingeführte LocalStorage eingesetzt. Es wird nach dem Login eines Benutzers dessen ID gesichert, damit später ein Sessionlogin durchgeführt werden kann und der Nutzer sich nicht erneut anmelden muss. Da diese Daten aber auf dem Client selbst gespeichert sind, müssen sie mit vorsicht behandelt werden. Der LocalStorage ist ein simpler Key-Value-Store.
 
-	\section{}
+	\section{Technologieentscheide}
+	In diesem Abschnitt des Dokuments begründen wir, weshalb wir die von uns gewählten Technologien verwenden.
+
+	\subsection{Webclient}
+	Wir setzen bei der Schnittstelle zwischen Benutzer und System bewusst auf einen Webclient und nicht auf einen Fat-Client. Dies ermöglicht es uns, dass unsere Applikation erreichbar ist, ohne dass zuerst ein Client heruntergeladen und installiert werden muss. Des weiteren können wir so auch direkt Benutzer mit Smartphones abholen, da wir ein Responsive Design verwenden. Es ergeben sich also einige Vorteile durch die verwendung eines Webclients anstelle des Fat-Clients. Deshablb haben wir uns für diese Variante entschieden.
+
+	\subsection{Angular}
+	Unseren Webclient setzen wir mit Angular 7 um. Dies hat zum einen den Grund, dass wir beide schon Erfahrungen mit Angular 7 haben, zum anderen aber auch, da Angular momentan eine der meist genutzten und am besten geeigneten Frontend-Frameworks ist. Für die Version 7 haben wir uns entschieden, da diese eine viel bessere Kompression als die Vorgängerversionen hat. Somit wird die Datenübertragung minimiert und die Geschwindigkeit der Applikation steigt.
 
 #Technologieentscheide
 	//TODO: Wieso Github
 	//TODO: Wieso Angular 7
+	//TODO: WIeso Node?
 	//TODO: Wieso CI? Und Testing beschreiben //TODO: Testting pipeline bild
 	//TODO: Hosting bei Heroku
+
+#testing pipeline
 
 #Deployment
 	//TODO: Deploymentdiagramm bild einfügen
