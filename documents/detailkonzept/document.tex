@@ -162,10 +162,25 @@
 	\subsection{Angular}
 	Unseren Webclient setzen wir mit Angular 7 um. Dies hat zum einen den Grund, dass wir beide schon Erfahrungen mit Angular 7 haben, zum anderen aber auch, da Angular momentan eine der meist genutzten und am besten geeigneten Frontend-Frameworks ist. Für die Version 7 haben wir uns entschieden, da diese eine viel bessere Kompression als die Vorgängerversionen hat. Somit wird die Datenübertragung minimiert und die Geschwindigkeit der Applikation steigt.
 
+	\subsection{NodeJS}
+	Wir haben uns für NodeJS entschieden, da es sich hier um eine neue und sehr schnelle Sprache handelt. Wir wollen einen möglichst wartbaren Code. Hier ist Node optimal, da es nur einen minimalen Overhead mit sich bringt. So kann unser Server flach gebaut werden ohne grosse Strukturen um diesen herum zu benötigen. Weitere Punkte die für Node sprechen sind, dass unser Front- und Backend somit die gleiche Sprache verwenden (JavaScript) und die Unterstützung für Websockets hier sehr gross ist, dank einer vielzahl von verfügbaren Libraries.
+
+	\subsection{Github}
+	Als Code-Versionskontrolle haben wir uns für Git entschieden, da dies in der heutigen Zeit der Standard ist und wir beide Git bereits kennen und benutzt haben. Als Ablage-Plattform haben wir uns für Github entschieden, da wir auch beide hier bereits Erfahrungen hatten und Github in unserem Fall das kostengünstigste Angebot ist. Da das Projekt die Anfoderung hat, dass es Open Source sein soll, ist Github eine passende Plattform, da auch viele andere grosse Open Source Projekte auf Github setzen.
+
+	\subsection{LaTex}
+	Der letzte erwähnenswerte Technologieentscheid ist der des Dokumentationstools. Wir verwenden LaTex, welches geeignet ist um technische und wissenschaftliche Dokumente zu erstellen. Bis jetzt hat noch niemand von uns mit LaTex gearbeitet. Wir haben uns aber für dieses entschieden nach einer intensiven Internetrecherche und einem ersten Testlauf, welchen wir durchgeführt haben.
+
+	\section{Continuous Integration und Testing}
+	Wir werden bei unserem Projekt eine Continuous Integration und ein Continuous Deployment eingerichten. Es wird zudem auch ein Continuous Testing geben.
+
+	\subsection{CI mit CircleCI}
+	CircleCI ist ein Buildserver, welcher für Continuous Integration genutzt wird. Man kann CircleCI mit Github verbinden und bei jedem Push einen Build "triggern". Somit sieht man direkt, wenn nach einem Push das Projekt nicht mehr gebaut werden kann und Fehler werden sehr frühzeitig erkannt. Dies ermöglicht es uns, dass der Stand welcher auf Github ist immer lauffähig und funktionell ist. CircleCI kann für Open Source Projekte kostenlos genutzt werden. Zu finden unter \href{https://circleci.com/}{https://circleci.com/}.
+
+	\subsection{CT mit Cypress}
+	Cypress ist ein weiteres Tool, welches mit Github verbunden werden kann. Es hat zudem auch eine Anbindung an CircleCI. Wir werden Cypress so konfigurieren, dass bei einem Push ein CircleCI-Build "getriggered" wird und das Kompilat aus diesem danach an Cypress übergeben wird. Cypress soll dieses danach laufen lassen und automatisch E2E (End-to-End) Tests laufen lassen, welche uns ein weiteres Werkzeug zur Überprüfung der Integrität unserer Software geben. Cypress ist zu finden unter \href{https://www.cypress.io/}{https://www.cypress.io/}.
+
 #Technologieentscheide
-	//TODO: Wieso Github
-	//TODO: Wieso Angular 7
-	//TODO: WIeso Node?
 	//TODO: Wieso CI? Und Testing beschreiben //TODO: Testting pipeline bild
 	//TODO: Hosting bei Heroku
 
@@ -173,20 +188,4 @@
 
 #Deployment
 	//TODO: Deploymentdiagramm bild einfügen
-
-
-	\subsection{Zielsetzungen}
-	\subsubsection{Muss-Ziele}
-	\begin{enumerate}
-		\item \faGlobe~   Globaler Gruppen Chat
-		\item \faUser~    Hinterlegen eines Benutzernamens
-		\item \faKey~     Benutzer muss den Chat später wieder aufnehmen können. z.B. Cookies oder Session Storage
-		\item \faMobile~  Die Seite für Mobile geräte optimieren
-	\end{enumerate}
-
-	\subsubsection{Kann-Ziele}
-	\begin{enumerate}
-		\item \faUsers~   Private Chats zwischen zwei Personen
-		\item \faGoogle~  Authentifizierung über Google Accounts, aber trotzdem anonym
-	\end{enumerate}
 \end{document}
