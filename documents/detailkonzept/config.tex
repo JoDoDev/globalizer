@@ -64,3 +64,14 @@
 		\node at (path picture bounding box.center) {
 			\usebox{\picbox}};
 	}] {};}
+
+
+	\newlength{\textundbildtextheight}
+
+	\newcommand{\textundbild}[1]{
+	\vfill
+	\begin{center}
+	\includegraphics[width=\textwidth,keepaspectratio=true,height=\textheight-\the\textundbildtextheight]{#1}
+	\end{center}
+	\vfill
+	}
