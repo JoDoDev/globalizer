@@ -74,10 +74,10 @@
 	\includegraphics[width=\linewidth]{system-components.png}
 
 	\section{Design-Pattern}
-	Da werder unser Backend, noch unser Frontend objektoriertiert ist, können keine Klassendiagramme erstellt werden. OOP-Eigenschaften wie Vererbungen und beziehungen werden bei diesem Projekt auch kaum benutzt. Aus diesem Grund verzichten wir auf diese Diagramme. Wir verwenden anstelle dessen aber ein UML-Aktivitäts\-diagramm, um unsere Abläufe zu visualisieren. Wir venwenden in diesem Projekt keine Domain-Driven-Design, Test-Driven-Design oder ähnliches, da unser Projekt zu klein ist, damit dies den Aufwand wert wäre.
+	Da werder unser Backend, noch unser Frontend objektoriertiert ist, können keine Klassendiagramme erstellt werden. OOP-Eigenschaften wie Vererbungen und Beziehungen werden bei diesem Projekt auch nicht benutzt. Aus diesem Grund verzichten wir auf diese Diagramme. Wir verwenden anstelle dessen aber ein UML-Aktivitäts\-diagramm, um unsere Abläufe zu visualisieren. Wir venwenden in diesem Projekt keine Domain-Driven-Design, Test-Driven-Design oder ähnliches, da unser Projekt zu klein ist, damit dies den Aufwand wert wäre.
 
 	\subsection{Allgemeine Architektur-Pattern}
-	Wir wollen die Kommunikation zwischen Frontend und Backend möglich dynamisch und asynchron halten, damit weder das Front- noch das Backend lange Wartenzeiten aufweist oder "einfriert". Da die Kommunikation selbst aufgrund der Technologien nur schwer ganz asynchron umsetzbar ist, verwenden wir das in Angular häufig angewanndte "pseudo Asynchronität". Die Anfragen an sich verlaufen synchron. Angular lässt aber zu, dass das Frontend wärenddessen nicht blockiert wird und arbeitet bis zur Antwort den restlichen Befehlsstack ab und hört auf Events. Im Backend läuft das auch so. Somit blockieren werder das Back- noch das Frontend und der Nutzer hat ein vielfach besseres Erlebnis beim verwenden der Applikation. Sowohl verwenden auch an beiden Orten das "Observer"-Pattern. Dies wird durch Angular und NodeJS unterstützt, in dem wir die "rxjs"-Library verwenden. Durch die einbindung dieser vereinfacht sich das Behandeln von Events und das reaktive Programmieren.
+	Wir wollen die Kommunikation zwischen Frontend und Backend möglich dynamisch und asynchron halten, damit weder das Front- noch das Backend lange Wartenzeiten aufweist oder "einfriert". Da die Kommunikation selbst aufgrund der Technologien nur schwer ganz asynchron umsetzbar ist, verwenden wir das in Angular häufig angewandte "pseudo Asynchronität". Die Anfragen an sich verlaufen synchron. Angular lässt aber zu, dass das Frontend wärenddessen nicht blockiert wird und arbeitet bis zur Antwort den restlichen Befehlsstack ab und hört auf Events. Im Backend läuft das auch so. Somit blockieren werder das Back- noch das Frontend und der Nutzer hat ein vielfach besseres Erlebnis beim verwenden der Applikation. Sowohl verwenden wir auch an beiden Orten das "Observer"-Pattern. Dies wird durch Angular und NodeJS unterstützt, in dem wir die "rxjs"-Library verwenden. Durch die einbindung dieser vereinfacht sich das Behandeln von Events und das reaktive Programmieren.
 
 	\subsection{Codestyle und Codequalität}
 	Damit unser Projekt auch über lange Zeit verwendbar, Wartbar und Erweiterbar ist, werden wir einige Programmierprinzipien anwenden, welche sicherstellen, dass unser Code langzeitig sauber bleibt. Dies sind folgende:
@@ -95,13 +95,13 @@
 	Das Backend wird in NodeJS erstellt. Es nutzt Websockets zur Kommunikation mit dem Frontend. Das Websocket-Protokoll ist auf TCP basiert und erlaubt bidirektionale Verbindungen zwischen Server und Client. Das Backend ist offen für neue Verbindungen. Wenn sich ein neuer Benutzer anmeldet, registriert dieser sich beim Backend. Dieses hört danach auf Anfragen des Frontends. Im gegenzug sendet das Backend neue Nachrichten selbst an das Frontend. Durch dieses "Bidirectional Message Pattern" können wir einiges an Bandbreite einsparen, da wir nicht immer wieder Fetch-Anfragen senden müssen um den Client auf dem aktuellen Stand zu behalten. Wir konnten somit das "Fetch"-Antipattern umgehen, da dieses für eine Chat-Applikation ungeeignet ist. In der folgenden Grafik kann ausgelesen werden, wie die der Ablauf bei Anfragen an den Server aussehen.
 
 	\subsubsection{UML Flussdiagramm}
-	\includegraphics[height=0.6\textheight]{flow-diagramm-server.jpg}
+	\includegraphics[height=0.8\textheight]{flow-diagramm-server.jpg}
 
 	\subsection{Architektur Frontend}
 	Unser Frontend wird mit Angular (Version 7) implementiert. Wieso genau wir uns für diese Technologie entschieden haben wird später erläutert. Dazu wird das Google Angular Material verwendet, damit wir dank dieser Library nicht alle UI-Komponenten selbst erstellen und designen müssen, sondern auf diese UI-Library zurückgreifen können (diese Library ist ähnlich wie Twitters Bootstrap). Das Frontend sendet auch via Websocket-Protokoll Nachrichten an das Backend.
 
 	\section{Persistenz}
-	Unsere Applikation verwendet wie bereits oben beschrieben eine InMemory Datenbank. Diese wird eine NoSQL Datenbank sein (NoSQL im Sinne von kein SQL verwendend und nicht darauf basierend). Sie basiert auf einem JSON-Datenmodel. Dies da wir in JavaScript programmieren werden und die Daten verwenden können, ohne diese zuerst parsen zu müssen. Die InMemory-DB wird durch Vanilla-JavaScript ermöglicht und braucht keine weiter Library. Ein konkretes Datenmodel gibt es nicht aufgrund von dem Fakt, dass wir dynamisch Daten speichen und entfernen und das genaue Datenmodel so entsteht.
+	Unsere Applikation verwendet wie bereits oben beschrieben eine InMemory Datenbank. Diese wird eine NoSQL Datenbank sein (NoSQL im Sinne von kein SQL verwendend und nicht darauf basierend). Sie basiert auf einem JSON-Datenmodel. Dies da wir in JavaScript programmieren werden und die Daten verwenden können, ohne diese zuerst parsen zu müssen. Die InMemory-DB wird durch Vanilla-JavaScript ermöglicht und braucht keine weiter Library.
 
 	\section{Detailierte Komponenten und Schnittstellen}
 	Folgend werden alle Komponenten genau beschrieben und deren Schnittstellen definiert.
@@ -130,7 +130,7 @@
 	\subsection{Frontend}
 	Die Frontendkomponente bildet die Schnittstelle zwischen Endbenutzer und System. Hier werden die Daten aus dem Backend grafisch dargestellt. Wichtig an dieser Komponente ist, dass das Aussehen dieser modern und stylisch ist, damit der Nutzer ein tolles Erlebnis auf der Seite hat. Auch Geschwindigkeit ist hier ein wichtiges Thema, weshalb Angular 7 eine sehr gut passende Technologie ist. Die Funktionsweise des Frontends kann aus diesen UML-Diagramm ausgelesen werden.
 	\subsubsection{UML Flussdiagramm}
-	//TODO: UML Flussdiagramm Frontend (client-flow-diagram.png)
+	\includegraphics[height=0.95\textheight]{client-flow-diagram.png}
 
 	\subsection{Funktionale Anforderungen}
 	Das Frontend ist betroffen von 3 obligatorischen funktionalen Anforderungen. Diese sind:
@@ -161,7 +161,7 @@
 	Wir setzen bei der Schnittstelle zwischen Benutzer und System bewusst auf einen Webclient und nicht auf einen Fat-Client. Dies ermöglicht es uns, dass unsere Applikation erreichbar ist, ohne dass zuerst ein Client heruntergeladen und installiert werden muss. Des weiteren können wir so auch direkt Benutzer mit Smartphones abholen, da wir ein Responsive Design verwenden. Es ergeben sich also einige Vorteile durch die verwendung eines Webclients anstelle des Fat-Clients. Deshablb haben wir uns für diese Variante entschieden.
 
 	\subsection{Angular}
-	Unseren Webclient setzen wir mit Angular 7 um. Dies hat zum einen den Grund, dass wir beide schon Erfahrungen mit Angular 7 haben, zum anderen aber auch, da Angular momentan eine der meist genutzten und am besten geeigneten Frontend-Frameworks ist. Für die Version 7 haben wir uns entschieden, da diese eine viel bessere Kompression als die Vorgängerversionen hat. Somit wird die Datenübertragung minimiert und die Geschwindigkeit der Applikation steigt.
+	Unseren Webclient setzen wir mit Angular 7 um. Dies hat zum einen den Grund, dass wir beide schon Erfahrungen mit Angular 7 haben, zum anderen aber auch, da Angular momentan eine der meist genutzten und am besten geeigneten Frontend-Frameworks ist. Für die Version 7 haben wir uns entschieden, da diese eine viel bessere Kompression als die Vorgängerversionen hat. Somit wird die Datenübertragung minimiert und die Startgeschwindigkeit der Applikation steigt.
 
 	\subsection{NodeJS}
 	Wir haben uns für NodeJS entschieden, da es sich hier um eine neue und sehr schnelle Sprache handelt. Wir wollen einen möglichst wartbaren Code. Hier ist Node optimal, da es nur einen minimalen Overhead mit sich bringt. So kann unser Server flach gebaut werden ohne grosse Strukturen um diesen herum zu benötigen. Weitere Punkte die für Node sprechen sind, dass unser Front- und Backend somit die gleiche Sprache verwenden (JavaScript) und die Unterstützung für Websockets hier sehr gross ist, dank einer vielzahl von verfügbaren Libraries.
@@ -169,11 +169,11 @@
 	\subsection{Github}
 	Als Code-Versionskontrolle haben wir uns für Git entschieden, da dies in der heutigen Zeit der Standard ist und wir beide Git bereits kennen und benutzt haben. Als Ablage-Plattform haben wir uns für Github entschieden, da wir auch beide hier bereits Erfahrungen hatten und Github in unserem Fall das kostengünstigste Angebot ist. Da das Projekt die Anfoderung hat, dass es Open Source sein soll, ist Github eine passende Plattform, da auch viele andere grosse Open Source Projekte auf Github setzen.
 
-	\subsection{LaTex}
-	Der letzte erwähnenswerte Technologieentscheid ist der des Dokumentationstools. Wir verwenden LaTex, welches geeignet ist um technische und wissenschaftliche Dokumente zu erstellen. Bis jetzt hat noch niemand von uns mit LaTex gearbeitet. Wir haben uns aber für dieses entschieden nach einer intensiven Internetrecherche und einem ersten Testlauf, welchen wir durchgeführt haben.
-
 	\subsection{Hosting bei Heroku}
 	Wir haben uns entschieden Front- sowie Backend bei Heroku zu hosten. Heroku werden wir deshalb verwenden, da dies ein sehr kostengünstiger Hoster ist. Wir haben auch hier vorab schon einen Test gemacht, um zu evaluieren, dass Heroku geeignet ist. Heroku hat unter anderem auch eine Anbindung an Github, welche wir uns zu nutze machen wollen. Dies wird aber genauer beim Deployment geschrieben.
+
+	\subsection{LaTex}
+	Der letzte erwähnenswerte Technologieentscheid ist der des Dokumentationstools. Wir verwenden LaTex, welches geeignet ist um technische und wissenschaftliche Dokumente zu erstellen. Bis jetzt hat noch niemand von uns mit LaTex gearbeitet. Wir haben uns aber für dieses entschieden nach einer intensiven Internetrecherche und einem ersten Testlauf, welchen wir durchgeführt haben.
 
 	\section{Continuous Integration und Continuous Testing}
 	Wir werden bei unserem Projekt eine Continuous Integration und ein Continuous Deployment eingerichten. Es wird zudem auch ein Continuous Testing geben.
