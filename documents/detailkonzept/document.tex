@@ -8,7 +8,7 @@
 	\end{center}
 
 	\section{Einleitung}
-	Dieses Dokument behandelt das Detailkonzept des Projekts Globalizer. Ziel und Zweck des Dokuments ist es, die fachlichen Anforderungen technisch zu umschreiben, damit diese später implementiert werden können. Zudem soll das Gesamtbild unserer Applikation klar gemacht werden und die Komponenten, sowie der Datenaustausch genau beschrieben werden. Es werden auch all unsere Technologieentscheide vermerkt und begründet. Zusammengefasst soll dieses Dokument also eine klare, wie auch detailierte Übersicht zu den technischen Aspekten unseres Projekts sein.
+	Dieses Dokument behandelt das Detailkonzept des Projekts Globalizer. Ziel und Zweck des Dokuments ist es, die fachlichen Anforderungen technisch zu umschreiben, damit diese später implementiert werden können. Zudem soll das Gesamtbild unserer Applikation klar gemacht werden und die Komponenten, sowie der Datenaustausch genau beschrieben werden. Es werden auch all unsere Technologieentscheide vermerkt und begründet. Zusammengefasst soll dieses Dokument also eine klare, wie auch detailierte Übersicht zu den technischen Aspekten unseres Projekts sein. In diesem Dokument wird nicht auf die Termine und Deadlines eingegangen, da dies schon in den vorherigen Dokumenten abgehandelt wurde und es keine Änderungen an diesen gibt.
 
 	\newpage
 
@@ -119,7 +119,42 @@
 	Was diese Anforderungen konkret bedeuten kann im Dokument "Anfoderungsspezifikationen" nachgelesen werden. Dort sind diese inklusiv Use-Case-Diagramm dargestellt.
 
 	\subsection{Schnittstellen}
-	//TODO: Schnittstellen beschreiben
+
+	\apiSpecToblerone
+	{Client to Server}
+	{AUTH\_USERNAME}
+	{\{username: string\}}
+	{Der Nutzer registriert sich beim Server mit einem Benutzernamen.}
+
+	\apiSpecToblerone
+	{Client to Server}
+	{AUTH\_USER\_ID}
+	{\{userId: string\}}
+	{Der Nutzer meldet sich beim Server mit seiner Benutzer-ID an.}
+
+	\apiSpecToblerone
+	{Client to Server}
+	{SEND\_MESSAGE}
+	{\{message: string\}}
+	{Der Nutzer sendet eine Nachricht and den Server, der diese anschliessend and die anderen Nutzer verteillt.}
+
+	\apiSpecToblerone
+	{Client to Server}
+	{DISCONNECT}
+	{\{\}}
+	{Der Server erhält ein Event wen der Benutzer offline geht.}
+
+	\apiSpecToblerone
+	{Server to Client}
+	{INITIAL\_MESSAGES}
+	{\{messages: string[]\}}
+	{Der Server sendet die bisherigen Nachrichten.}
+
+	\apiSpecToblerone
+	{Server to Client}
+	{DISCONNECT}
+	{userCount: number}
+	{Der Server sendet die aktuelle anzahl der Nutzer die gerade online sind.}
 
 	\subsection{Persistenz}
 	Das Backend übernimmt den Hauptteil der Persistenz der ganzen Applikation. Hier werden alle Nachrichten und Benutzer in die InMemory-DB gespeichert und der Zustand der ganzen Applikation.
