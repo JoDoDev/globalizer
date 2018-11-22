@@ -109,6 +109,8 @@
 	\subsection{Backend}
 	Die Backendkomponente bildet das "Hirn" unserer Applikation. Hier werden sowohl alle wichtigen Daten gespeichert (in der InMemory-DB), als auch alle wichtigen Impulse verwendet (Websockets). Ziel des Backends ist es eine möglichst hohe flexibilität und Wartbarkeit mit einer möglichst hohen Performance zu kombinieren. Dies wird durch die sehr junge Backend-Sprache NodeJS ermöglicht.
 
+	\newpage
+
 	\subsection{Funktionale Anforderungen}
 	Das Backend ist betroffen von 3 obligatorischen funktionalen Anforderungen. Diese sind:
 	\begin{itemize}
@@ -215,6 +217,8 @@
 
 	\subsection{CI mit CircleCI}
 	CircleCI ist ein Buildserver, welcher für Continuous Integration genutzt wird. Man kann CircleCI mit Github verbinden und bei jedem Push einen Build "triggern". Somit sieht man direkt, wenn nach einem Push das Projekt nicht mehr gebaut werden kann und Fehler werden sehr frühzeitig erkannt. Dies ermöglicht es uns, dass der Stand welcher auf Github ist immer lauffähig und funktionell ist. CircleCI kann für Open Source Projekte kostenlos genutzt werden. Zu finden unter \href{https://circleci.com/}{https://circleci.com/}.
+
+	\newpage
 
 	\subsection{CT mit Cypress}
 	Cypress ist ein weiteres Tool, welches mit Github verbunden werden kann. Es hat zudem auch eine Anbindung an CircleCI. Wir werden Cypress so konfigurieren, dass bei einem Push ein CircleCI-Build "getriggered" wird und Cypress sich danach in diesen Build einhängt. Cypress soll danach automatisch alle E2E (End-to-End) Tests laufen lassen. Von den E2E Tests wird ein Video aufgezeichnet, welches dann auf Cypress einsehbar ist. So können wir anhand von den Videos auch Fehler finden, welche in den E2E Tests vorkommen. Cypress ist also ein Tool, welches uns ein weiteres Werkzeug zur Überprüfung der Integrität unserer Software geben wird. Cypress ist zu finden unter \href{https://www.cypress.io/}{https://www.cypress.io/}.
