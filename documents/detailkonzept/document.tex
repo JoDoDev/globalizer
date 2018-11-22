@@ -24,7 +24,7 @@
 			Wolfisberg    & Donato            & donato.wolfisberg@gmail.com    & Entwickler            \\ \hline
 			Gian          & Ott               & gian\_ott@sluz.ch              & Prüfer                \\ \hline
 			Manuel        & Troxler           & manuel\_troxler@sluz.ch        & Prüfer                \\ \hline
-		\end{tabularx}%
+		\end{tabularx}
 	\end{table}
 
 	\subsection{Änderungskontrolle}
@@ -68,13 +68,13 @@
 	\newpage
 
 	\subsection{Zonen-Übersicht}
-	Auf der nachfolgenden Grafik kann unsere Architektur im groben ausgelesen werden. Das System ist in die drei "Komponenten-Zonen" unterteilt. Diese sollen wenn möglich unabhängig von den anderen deploybar sein. Dies ermöglicht es uns später auch, unsere Deployment-Zyklen zu vereinfachen. Im Backend-System ist zusätzlich auch der LoadBalancer eingezeichnet, welcher vom Hoster übernommen wird.\newline
+	Auf der nachfolgenden Grafik kann unsere Architektur im groben ausgelesen werden. Das System ist in die drei "Komponenten-Zonen" unterteilt. Diese sollen wenn möglich unabhängig von den anderen deploybar sein. Dies ermöglicht es uns später auch, unsere Deployment-Zyklen zu vereinfachen. Im Backend-System ist zusätzlich auch der LoadBalancer eingezeichnet, welcher vom Hoster übernommen wird.
 
 	\noindent
 	\includegraphics[width=\linewidth]{system-components.png}
 
 	\section{Design-Pattern}
-	Da werder unser Backend, noch unser Frontend objektoriertiert ist, können keine Klassendiagramme erstellt werden. OOP-Eigenschaften wie Vererbungen und beziehungen werden bei diesem Projekt auch kaum benutzt. Aus diesem Grund verzichten wir auf diese Diagramme. Wir verwenden anstelle dessen aber ein UML-Aktivitätsdiagramm, um unsere Abläufe zu visualisieren. Wir venwenden in diesem Projekt keine Domain-Driven-Design, Test-Driven-Design oder ähnliches, da unser Projekt zu klein ist, damit dies den Aufwand wert wäre.
+	Da werder unser Backend, noch unser Frontend objektoriertiert ist, können keine Klassendiagramme erstellt werden. OOP-Eigenschaften wie Vererbungen und beziehungen werden bei diesem Projekt auch kaum benutzt. Aus diesem Grund verzichten wir auf diese Diagramme. Wir verwenden anstelle dessen aber ein UML-Aktivitäts\-diagramm, um unsere Abläufe zu visualisieren. Wir venwenden in diesem Projekt keine Domain-Driven-Design, Test-Driven-Design oder ähnliches, da unser Projekt zu klein ist, damit dies den Aufwand wert wäre.
 
 	\subsection{Allgemeine Architektur-Pattern}
 	Wir wollen die Kommunikation zwischen Frontend und Backend möglich dynamisch und asynchron halten, damit weder das Front- noch das Backend lange Wartenzeiten aufweist oder "einfriert". Da die Kommunikation selbst aufgrund der Technologien nur schwer ganz asynchron umsetzbar ist, verwenden wir das in Angular häufig angewanndte "pseudo Asynchronität". Die Anfragen an sich verlaufen synchron. Angular lässt aber zu, dass das Frontend wärenddessen nicht blockiert wird und arbeitet bis zur Antwort den restlichen Befehlsstack ab und hört auf Events. Im Backend läuft das auch so. Somit blockieren werder das Back- noch das Frontend und der Nutzer hat ein vielfach besseres Erlebnis beim verwenden der Applikation. Sowohl verwenden auch an beiden Orten das "Observer"-Pattern. Dies wird durch Angular und NodeJS unterstützt, in dem wir die "rxjs"-Library verwenden. Durch die einbindung dieser vereinfacht sich das Behandeln von Events und das reaktive Programmieren.
@@ -93,8 +93,9 @@
 
 	\subsection{Architektur Backend}
 	Das Backend wird in NodeJS erstellt. Es nutzt Websockets zur Kommunikation mit dem Frontend. Das Websocket-Protokoll ist auf TCP basiert und erlaubt bidirektionale Verbindungen zwischen Server und Client. Das Backend ist offen für neue Verbindungen. Wenn sich ein neuer Benutzer anmeldet, registriert dieser sich beim Backend. Dieses hört danach auf Anfragen des Frontends. Im gegenzug sendet das Backend neue Nachrichten selbst an das Frontend. Durch dieses "Bidirectional Message Pattern" können wir einiges an Bandbreite einsparen, da wir nicht immer wieder Fetch-Anfragen senden müssen um den Client auf dem aktuellen Stand zu behalten. Wir konnten somit das "Fetch"-Antipattern umgehen, da dieses für eine Chat-Applikation ungeeignet ist. In der folgenden Grafik kann ausgelesen werden, wie die der Ablauf bei Anfragen an den Server aussehen.
+
 	\subsubsection{UML Flussdiagramm}
-	\includegraphics[width=0.9\linewidth]{flow-diagramm-server.jpg}
+	\includegraphics[height=0.6\textheight]{flow-diagramm-server.jpg}
 
 	\subsection{Architektur Frontend}
 	Unser Frontend wird mit Angular (Version 7) implementiert. Wieso genau wir uns für diese Technologie entschieden haben wird später erläutert. Dazu wird das Google Angular Material verwendet, damit wir dank dieser Library nicht alle UI-Komponenten selbst erstellen und designen müssen, sondern auf diese UI-Library zurückgreifen können (diese Library ist ähnlich wie Twitters Bootstrap). Das Frontend sendet auch via Websocket-Protokoll Nachrichten an das Backend.
@@ -191,7 +192,15 @@
 	\noindent
 	\includegraphics[width=\textwidth]{deploy-hocks-testing.png}
 
+<<<<<<< HEAD
 	\section{Deployment}
 	Unser Deployment wird automatisch von Heroku übernommen werden, da wir dieses an Github anbinden wollen. Somit 
 	//TODO: Deploymentdiagramm bild einfügen
+=======
+  \subsection{Technologieentscheide Noch nicht feritg}
+		TODO: Hosting bei Heroku
+
+	\subsection{Deployment Noch nicht feritg}
+		TODO: Deploymentdiagramm bild einfügen
+>>>>>>> master
 \end{document}
